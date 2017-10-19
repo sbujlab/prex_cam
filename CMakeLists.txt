@@ -154,6 +154,19 @@ set(REMOLL_SCRIPTS
     geometry_sculpt/schema/gdml_parameterised.xsd
     geometry_sculpt/schema/gdml_replicas.xsd
     geometry_sculpt/schema/gdml_solids.xsd
+    geometry_ciprian/prexII_beamPipeVacuum.gdml
+    geometry_ciprian/subQ1HosesCylRedesign.gdml
+    geometry_ciprian/subTargetChamber.gdml
+    geometry_ciprian/subCollShields.gdml
+    geometry_ciprian/subBeamPipe_MidVacuum.gdml
+    geometry_ciprian/schema/gdml.xsd
+    geometry_ciprian/schema/gdml_core.xsd
+    geometry_ciprian/schema/gdml_define.xsd
+    geometry_ciprian/schema/gdml_extensions.xsd
+    geometry_ciprian/schema/gdml_materials.xsd
+    geometry_ciprian/schema/gdml_parameterised.xsd
+    geometry_ciprian/schema/gdml_replicas.xsd
+    geometry_ciprian/schema/gdml_solids.xsd
     vis/OIX.mac
     vis/Qt.mac
     vis/vis.mac

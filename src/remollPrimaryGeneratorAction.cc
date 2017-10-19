@@ -22,6 +22,7 @@
 #include "remollGenFlat.hh"
 #include "remollGenAl.hh"
 #include "remollGenLUND.hh"
+#include "remollGenPrex.hh"
 
 remollPrimaryGeneratorAction::remollPrimaryGeneratorAction()
 : fParticleGun(0),fEventGen(0),fEvent(0),fMessenger(0)
@@ -73,6 +74,8 @@ void remollPrimaryGeneratorAction::SetGenerator(G4String& genname)
         fEventGen = new remollGenAl(0);
     }else if( genname == "pion_LUND" ) {
         fEventGen = new remollGenLUND();  
+    }else if( genname == "prex" ) {
+        fEventGen = new remollGenPrex();
     }
 
     if( !fEventGen ) {
