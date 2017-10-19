@@ -28,12 +28,17 @@ remollPrimaryGeneratorAction::remollPrimaryGeneratorAction()
 : fParticleGun(0),fEventGen(0),fEvent(0),fMessenger(0)
 {
     // Default generator
-    G4String default_generator = "moller";
+    G4String default_generator = "prex";//"moller";
     SetGenerator(default_generator);
 
     // Get the particle gun
     fParticleGun = fEventGen->GetParticleGun();
-
+/*default initializers for prex generator */
+    fParticleGun->SetParticleDefinition(G4ParticleTable::GetParticleTable()->FindParticle("e-") );
+    fParticleGun->SetParticleMomentumDirection(G4ThreeVector(0.,0.,1.));
+    fParticleGun->SetParticleEnergy(1.05*GeV);
+    fParticleGun->SetParticlePosition(G4ThreeVector(0.*cm, 0.*cm, -1300.*cm));
+/**/
     // Create generic messenger
     fMessenger = new G4GenericMessenger(this,"/remoll/","Remoll properties");
     fMessenger->DeclareMethod("gen",&remollPrimaryGeneratorAction::SetGenerator,"Select physics generator");
