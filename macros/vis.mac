@@ -12,7 +12,8 @@
 #/remoll/setgeofile geometry_sculpt_less_hybshld/mollerMother.gdml
 
 # This is the current working geometry
-/remoll/setgeofile geometry_ciprian/prexII_beamPipeVacuum.gdml
+#/remoll/setgeofile geometry_ciprian/prexII_beamPipeVacuum.gdml
+/remoll/setgeofile geometry/coll_prexII.gdml
 
 
 #/remoll/likekryptonite  true

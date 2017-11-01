@@ -128,11 +128,6 @@ target_link_libraries(remollroot ${ROOT_LIBRARIES} ${Boost_LIBRARIES} )
 FILE( GLOB REMOLL_GEO "geometry/*" )
 
 set(REMOLL_SCRIPTS
-    geometry/mollerMother.gdml
-    geometry/detectorDaughter.gdml
-    geometry/hybridDaughter.gdml
-    geometry/targetDaughter.gdml
-    geometry/upstreamDaughter.gdml
     geometry/schema/gdml.xsd
     geometry/schema/gdml_core.xsd
     geometry/schema/gdml_define.xsd

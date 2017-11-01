@@ -10,7 +10,8 @@ remollSteppingAction::remollSteppingAction()
 : fDrawFlag(false),fEnableKryptonite(true)
 {
   // List of kryptonite materials
-  std::set<G4String> materials = {"Tungsten", "Pb", "Copper"};
+  //std::set<G4String> materials = {"Tungsten", "Pb", "Copper"};  //FIXME Cameron temporary change 10/25/2017
+  std::set<G4String> materials = {"matKryptonite"};
 
   // Find kryptonite materials in material tables
   G4MaterialTable* table = G4Material::GetMaterialTable();

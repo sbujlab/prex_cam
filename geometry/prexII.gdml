@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+
+<!DOCTYPE gdml [
+<!ENTITY materials SYSTEM "materials.xml">
+]>
+
+<gdml xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="./schema/gdml.xsd">
+
+
+  <define>
+    <!-- Commonly adjusted parameters -->
+    <!-- Units are in cm, and are NOT half-lengths -->
+    <constant name="fTargetLength" value="0.05"/>
+    <constant name="fTargetLengthDiamond" value="0.015"/>
+    <constant name="fDeltaCaTargetZ" value="0*46.0"/>
+
+    <constant name="PI" value="1.*pi"/>
+
+    <!-- World Volume -->
+    <constant name="width_mother" value="10000.0"/>
+    <constant name="height_mother" value="10000.0"/>
+    <constant name="length_mother" value="10000.0"/>
+
+    <!-- reference everything to this -->
+    <constant name="prex_target_center" value="-105.3"/>
+    <!-- referenced from elog 2977 by Seamus where predicted relative shift is 46 cm -->
+    <constant name="crex_target_center" value="-151.3"/>
+
+    <!-- Target dimensions  -->
+    <constant name="inner_rad_targ" value="0.0"/>
+    <constant name="outer_rad_targ" value="4.0"/>
+    <constant name="center_targ" value="prex_target_center - fDeltaCaTargetZ"/>
+    <constant name="length_targ" value="fTargetLength"/>
+
+    <!-- Positions -->
+    <position unit="cm" name="center" x="0" y="0" z="0"/>
+
+    <position unit="cm" name="targ_center" x="0" y="0" z="center_targ"/>
+    <position unit="cm" name="crex_targ_center" x="0" y="0" z="crex_target_center"/>
+
+
+  </define>
+
+  &materials;
+
+  <solids>
+    <!-- Mother Volume -->
+    <box lunit="cm" name="boxMother" x="width_mother" y="height_mother" z="length_mother"/>
+
+    <!-- Target  -->
+    <!--Assume 1.77g/cm3 Ca48 density gives a L of 0.6 cm-->
+    <tube aunit="deg" startphi="0" deltaphi="360"
+          lunit="cm" name="tubeTarget"
+          rmin="inner_rad_targ"
+          rmax="outer_rad_targ"
+          z="0.05" />
+    <!-- z="0.6" /> -->
+  </solids>
+
+  <structure>
+    <volume name="target_logic">
+      <!-- <materialref ref="Calcium48"/> -->
+      <materialref ref="PureLead"/>
+      <solidref ref="tubeTarget"/>
+    </volume>
+
+    <volume name="logicMother">
+      <materialref ref="Vacuum"/>
+      <solidref ref="boxMother"/>
+
+      <physvol name="target">
+        <volumeref ref="target_logic"/>
+        <positionref ref="targ_center"/>
+      </physvol>
+
+    </volume>
+  </structure>
+
+  <setup name="Default" version="1.0">
+    <world ref="logicMother"/>
+  </setup>
+
+</gdml>
