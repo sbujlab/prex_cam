@@ -179,7 +179,7 @@
     <position unit="cm" name="dumpTempShield_right_trans_2" x="0" y="(-1.*dumpTempShieldUS_height + 1.*dumpTempShieldDS_height)/2" z="(dumpTempShieldUS_length + dumpTempShieldDS_length)/2 + dumpTempShieldGap_length + dumpTempShieldMS_length"/>
 
     <!-- Neckdown Beam pipe (ines) -->
-    <constant name="neckDownOffset" value="21.131"/> <!-- Offset from dump entry -->
+    <constant name="neckDownOffset" value="0*21.131"/> <!-- Offset from dump entry -->
 
     <constant name="ndFlangeUS_r_min" value="36.75*i2cm/2"/>
     <constant name="ndFlangeUS_r_max" value="46.*i2cm/2"/>

@@ -129,14 +129,7 @@
     <constant name="tempdet_r_out" value="120.5*i2cm - 1.0"/>
     <constant name="tempdet_thickness" value="1.0"/>
     <constant name="tempdet_center_z" value="hall_cylwall_radius - 25.0"/><!--center_cw70_coll + length_cw70_coll/2 + kryp_shield_thickness/2 + 10.0"/>-->
-
-    <!-- Dump Extension Beampipe -->
-    <constant name="dumpExt_r_min" value="18.0*i2cm"/>
-    <constant name="dumpExt_r_max" value="19.5*i2cm"/>
-    <constant name="dumpExt_length" value="1335.0875"/>
-    <constant name="dumpExt_offset" value="0"/>
-    <constant name="dumpExt_center_z" value="hall_cylwall_radius - dumpExt_length/2 - dumpExt_offset"/>
-    <position unit="cm" name="dumpExt_trans" x="0" y="0" z="tempdet_center_z - hall_cylwall_radius + dumpExt_length/2 + dumpExt_offset"/> 
+    <position unit="cm" name="tempdet_position" x="0" y="0" z="tempdet_center_z"/>
 
     <!-- Dump --> 
 
@@ -160,7 +153,7 @@
     <position unit="cm" name="dumpUSSub_trans" x="0" y="0" z="(-1.*dump_length + 1.*dumpUSSub_length)/2"/>
     <position unit="cm" name="dumpDSSub1_trans" x="0" y="(1.*dump_height - 1.*dumpDSSub_height1)/2 - dump_wall_thickness" z="(1.*dump_length - 1.*dumpDSSub_length1)/2 - dump_wall_thickness"/>
     <position unit="cm" name="dumpDSSub2_trans" x="0" y="(-1.*dump_height + 1.*dumpDSSub_height2)/2" z="(1.*dump_length - 1.*dumpDSSub_length2)/2"/>
-    <position unit="cm" name="hall_dumphole_sub_trans" x="0" z="-1.*hall_cylwall_height/2 + hall_floor_distance + dump_center_y" y="-1.*hall_cylwall_radius - hall_cylwall_thickness/2 - 0.1"/> <!-- NEW shift forward for subtraction purposes FIXME -->
+    <position unit="cm" name="hall_dumphole_sub_trans" x="0" z="-1.*hall_cylwall_height/2 + hall_floor_distance + dump_center_y" y="-1.*hall_cylwall_radius - hall_cylwall_thickness/2"/>
 
     <!-- Temporary Lead Shield -->
     <constant name="dumpTempShieldUS_width" value="16*i2cm"/>
@@ -268,11 +261,9 @@
     <position unit="cm" name="target_diamond_US_center" x="0" y="0" z="target_center_z - 1.*(fTargetLengthDiamond + fTargetLength)/2"/>
     <position unit="cm" name="target_diamond_DS_center" x="0" y="0" z="target_center_z + 1.*(fTargetLengthDiamond + fTargetLength)/2"/>
     <position unit="cm" name="kryp_shield_center" x="0" y="0" z="kryp_shield_center_z_position"/>
-    <position unit="cm" name="tempdet_position" x="0" y="0" z="tempdet_center_z"/>
     <position unit="cm" name="hall_top_center" x="0" y="hall_top_center_y" z="0"/>
     <position unit="cm" name="hall_cylwall_center" x="0" y="hall_cylwall_center_y" z="0"/>
     <position unit="cm" name="hall_floor_center" x="0" y="hall_floor_center_y" z="0"/>
-    <position unit="cm" name="dumpExt_center" x="0" y="0" z="dumpExt_center_z"/> 
     <position unit="cm" name="dump_center" x="0" y="dump_center_y" z="dump_center_z"/>
     <position unit="cm" name="dumpTempShield_left_center" x="-1.*dump_width/2 + dump_wall_thickness + dumpTempShieldUS_width/2" y="-1.*(dump_floor_distance_beam) + dumpTempShieldUS_height/2" z="hall_cylwall_radius + (98.0*i2cm + (dumpTempShieldUS_length/2))"/> <!-- old FIXME +dumpTempShieldMS_length+dumpTempShieldDS_length+dumpTempShieldGap_length)/2)"/> -->
   <position unit="cm" name="dumpTempShield_right_center" x="1.*dump_width/2 - dump_wall_thickness - dumpTempShieldUS_width/2" y="-1.*(dump_floor_distance_beam) + dumpTempShieldUS_height/2" z="hall_cylwall_radius + (98.0*i2cm + (dumpTempShieldUS_length/2))"/>
@@ -493,20 +484,11 @@
       <positionref ref="hall_dumphole_sub_trans"/>
     </subtraction>
 
-    <!-- Dump Extension Beam Pipe -->
-
-    <tube aunit="deg" startphi="0" deltaphi="360" lunit="cm" name="dumpExt_1" rmin="dumpExt_r_min" rmax="dumpExt_r_max" z="dumpExt_length"/>
-
-    <subtraction name ="dumpExt_solid">
-      <first ref="dumpExt_1"/>
-      <second ref="tempdet_solid"/>
-      <positionref ref="dumpExt_trans"/>
-    </subtraction>
 
     <!-- Dump Enclosure -->
 
     <box lunit="cm" name="boxDumpBulk" x="dump_width" y="dump_height" z="dump_length"/>
-    <box lunit="cm" name="boxDumpUSSub" x="dumpUSSub_width" y="dumpUSSub_height" z="dumpUSSub_length*1.005"/>
+    <box lunit="cm" name="boxDumpUSSub" x="dumpUSSub_width" y="dumpUSSub_height" z="dumpUSSub_length"/>
     <box lunit="cm" name="boxDumpDSSub1" x="dumpDSSub_width1" y="dumpDSSub_height1" z="dumpDSSub_length1"/>
     <box lunit="cm" name="boxDumpDSSub2" x="dumpDSSub_width2" y="dumpDSSub_height2" z="dumpDSSub_length2"/>
 
@@ -573,6 +555,10 @@
           aunit="deg" startphi="0" deltaphi="360" 
           lunit="cm" rmin="ndFlangeUS_r_min" rmax="ndFlangeUS_r_max"
           z="ndFlangeUS_thickness"/> 
+    <tube name="ndFlangeDS_solid" 
+          aunit="deg" startphi="0" deltaphi="360" 
+          lunit="cm" rmin="ndFlangeDS_r_min" rmax="ndFlangeDS_r_max"
+          z="ndFlangeDS_thickness"/> 
 
     <cone name="ndConeUS_solid" lunit="cm"
           aunit="deg" startphi="0" deltaphi="360"
@@ -628,7 +614,7 @@
     <tube name="nitrogenAtmWall_hole" 
           aunit="deg" startphi="0" deltaphi="360" 
           lunit="cm" rmin="0.0" rmax="nitrogenAtmWall_hole_r"
-          z="1.1*nitrogenAtmWall_thickness"/> <!-- FIXME This hole should be large enough that flanges and beam pipes don't intersect -->
+          z="nitrogenAtmWall_thickness"/> <!-- FIXME This hole should be large enough that flanges and beam pipes don't intersect -->
 
     <subtraction name="nitrogenAtmWall_solid">
       <first ref="boxNitrogenAtmWall"/>
@@ -745,14 +731,6 @@
       <auxiliary auxtype="Color" auxvalue="white"/>
       <auxiliary auxtype="SensDet" auxvalue="Hall_Floor"/>
       <auxiliary auxtype="DetNo" auxvalue="8"/>
-    </volume>
-
-    <volume name="dumpExt_logic">
-      <materialref ref="Aluminum"/>
-      <solidref ref="dumpExt_solid"/>
-      <auxiliary auxtype="Color" auxvalue="white"/>
-      <auxiliary auxtype="SensDet" auxvalue="DumpExt"/>
-      <auxiliary auxtype="DetNo" auxvalue="51"/>
     </volume>
     
     <volume name="dump_logic">
@@ -952,12 +930,7 @@
         <positionref ref="hall_floor_center"/>
         <rotationref ref="scRot_1"/>
       </physvol>
-
-      <physvol name="dumpExt">
-        <volumeref ref="dumpExt_logic"/>
-        <positionref ref="dumpExt_center"/>
-      </physvol>
-
+ 
       <physvol name="dump">
         <volumeref ref="dump_logic"/>
         <positionref ref="dump_center"/>

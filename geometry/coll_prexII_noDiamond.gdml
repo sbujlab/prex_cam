@@ -914,7 +914,7 @@
         <volumeref ref="target_logic"/>
         <positionref ref="target_center"/>
       </physvol>
-
+<!--
       <physvol name="target_diamond_US">
         <volumeref ref="target_diamond_US_logic"/>
         <positionref ref="target_diamond_US_center"/>
@@ -924,7 +924,7 @@
         <volumeref ref="target_diamond_DS_logic"/>
         <positionref ref="target_diamond_DS_center"/>
       </physvol>
-
+-->
       <physvol name="kryp_shield">
         <volumeref ref="kryp_shield_logic"/>
         <positionref ref="kryp_shield_center"/>

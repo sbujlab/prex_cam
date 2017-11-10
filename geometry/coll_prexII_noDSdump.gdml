@@ -1028,6 +1028,7 @@
         <positionref ref="nitrogenAtmWall_center"/>
       </physvol>
 
+<!--
       <physvol name="dumpPipeDS">
         <volumeref ref="dumpPipeDS_logic"/>
         <positionref ref="dumpPipeDS_center"/>
@@ -1042,7 +1043,7 @@
         <volumeref ref="waterDumpWaterTank_logic"/>
         <positionref ref="waterDumpWaterTank_center"/>
       </physvol>
-
+-->
     </volume>
   </structure>
 

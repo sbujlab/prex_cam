@@ -160,7 +160,7 @@
     <position unit="cm" name="dumpUSSub_trans" x="0" y="0" z="(-1.*dump_length + 1.*dumpUSSub_length)/2"/>
     <position unit="cm" name="dumpDSSub1_trans" x="0" y="(1.*dump_height - 1.*dumpDSSub_height1)/2 - dump_wall_thickness" z="(1.*dump_length - 1.*dumpDSSub_length1)/2 - dump_wall_thickness"/>
     <position unit="cm" name="dumpDSSub2_trans" x="0" y="(-1.*dump_height + 1.*dumpDSSub_height2)/2" z="(1.*dump_length - 1.*dumpDSSub_length2)/2"/>
-    <position unit="cm" name="hall_dumphole_sub_trans" x="0" z="-1.*hall_cylwall_height/2 + hall_floor_distance + dump_center_y" y="-1.*hall_cylwall_radius - hall_cylwall_thickness/2 - 0.1"/> <!-- NEW shift forward for subtraction purposes FIXME -->
+    <position unit="cm" name="hall_dumphole_sub_trans" x="0" z="-1.*hall_cylwall_height/2 + hall_floor_distance + dump_center_y" y="-1.*hall_cylwall_radius - hall_cylwall_thickness/2"/>
 
     <!-- Temporary Lead Shield -->
     <constant name="dumpTempShieldUS_width" value="16*i2cm"/>
@@ -188,38 +188,38 @@
     
     <constant name="ndConeUS_r_min1" value="37.54*i2cm/2"/>
     <constant name="ndConeUS_r_max1" value="38.*i2cm/2"/>
-    <constant name="ndConeUS_r_min2" value="23.54*i2cm/2"/>
-    <constant name="ndConeUS_r_max2" value="24.*i2cm/2"/>
+    <constant name="ndConeUS_r_min2" value="36.*i2cm/2"/>
+    <constant name="ndConeUS_r_max2" value="36.1*i2cm/2"/>
     <constant name="ndConeUS_length" value="9.95*i2cm"/>
     <constant name="ndConeUS_center_z" value="ndFlangeUS_center_z + ndFlangeUS_thickness/2 + ndConeUS_length/2"/>
 
-    <constant name="ndPipeUS_r_min" value="12.12*i2cm"/>
-    <constant name="ndPipeUS_r_max" value="12.5*i2cm"/>
+    <constant name="ndPipeUS_r_min" value="18.12*i2cm"/>
+    <constant name="ndPipeUS_r_max" value="18.5*i2cm"/>
     <constant name="ndPipeUS_length" value="91.51*i2cm"/>
     <constant name="ndPipeUS_center_z" value="ndConeUS_center_z + ndConeUS_length/2 + ndPipeUS_length/2"/>
     
-    <constant name="ndDonut_outer_r_min" value="23.37*i2cm/2"/>
-    <constant name="ndDonut_outer_r_max" value="25.38*i2cm/2"/>
+    <constant name="ndDonut_outer_r_min" value="36.37*i2cm/2"/>
+    <constant name="ndDonut_outer_r_max" value="36.38*i2cm/2"/>
     <constant name="ndDonut_outer_thickness" value="1.*i2cm"/>
     <constant name="ndDonut_outer_center_z" value="ndPipeUS_center_z + ndPipeUS_length/2 + ndDonut_outer_thickness/2"/>
 
-    <constant name="ndDonut_inner_r_min" value="3.25*i2cm/2"/>
-    <constant name="ndDonut_inner_r_max" value="11.8*i2cm/2"/>
+    <constant name="ndDonut_inner_r_min" value="36.25*i2cm/2"/>
+    <constant name="ndDonut_inner_r_max" value="36.3*i2cm/2"/>
     <constant name="ndDonut_inner_thickness" value=".79*i2cm"/>
     <constant name="ndDonut_inner_center_z" value="ndPipeUS_center_z + ndPipeUS_length/2 + ndDonut_outer_thickness/2"/>
 
-    <constant name="ndDonut_middle_r_min" value="11.81*i2cm/2"/>
-    <constant name="ndDonut_middle_r_max" value="23.37*i2cm/2"/>
+    <constant name="ndDonut_middle_r_min" value="36.2*i2cm/2"/>
+    <constant name="ndDonut_middle_r_max" value="36.22*i2cm/2"/>
     <constant name="ndDonut_middle_thickness" value=".39*i2cm"/>
     <constant name="ndDonut_middle_center_z" value="ndPipeUS_center_z + ndPipeUS_length/2 + ndDonut_outer_thickness/2"/>
     
-    <constant name="ndPipeDS_r_min" value="12.12*i2cm"/>
-    <constant name="ndPipeDS_r_max" value="12.5*i2cm"/>
+    <constant name="ndPipeDS_r_min" value="18.12*i2cm"/>
+    <constant name="ndPipeDS_r_max" value="18.5*i2cm"/>
     <constant name="ndPipeDS_length" value="85.5*i2cm"/>
     <constant name="ndPipeDS_center_z" value="ndDonut_outer_center_z + ndDonut_outer_thickness/2 + ndPipeDS_length/2"/>
 
-    <constant name="ndConeDS_r_min1" value="23.49*i2cm/2"/>
-    <constant name="ndConeDS_r_max1" value="24.*i2cm/2"/>
+    <constant name="ndConeDS_r_min1" value="35.49*i2cm/2"/>
+    <constant name="ndConeDS_r_max1" value="36.*i2cm/2"/>
     <constant name="ndConeDS_r_min2" value="12.0*i2cm/2"/>
     <constant name="ndConeDS_r_max2" value="12.5*i2cm/2"/>
     <constant name="ndConeDS_length" value="6.13*i2cm"/>
@@ -268,7 +268,7 @@
     <position unit="cm" name="target_diamond_US_center" x="0" y="0" z="target_center_z - 1.*(fTargetLengthDiamond + fTargetLength)/2"/>
     <position unit="cm" name="target_diamond_DS_center" x="0" y="0" z="target_center_z + 1.*(fTargetLengthDiamond + fTargetLength)/2"/>
     <position unit="cm" name="kryp_shield_center" x="0" y="0" z="kryp_shield_center_z_position"/>
-    <position unit="cm" name="tempdet_position" x="0" y="0" z="tempdet_center_z"/>
+   <position unit="cm" name="tempdet_position" x="0" y="0" z="tempdet_center_z"/>
     <position unit="cm" name="hall_top_center" x="0" y="hall_top_center_y" z="0"/>
     <position unit="cm" name="hall_cylwall_center" x="0" y="hall_cylwall_center_y" z="0"/>
     <position unit="cm" name="hall_floor_center" x="0" y="hall_floor_center_y" z="0"/>
@@ -754,7 +754,7 @@
       <auxiliary auxtype="SensDet" auxvalue="DumpExt"/>
       <auxiliary auxtype="DetNo" auxvalue="51"/>
     </volume>
-    
+
     <volume name="dump_logic">
       <materialref ref="Concrete"/>
       <solidref ref="dump_solid"/>
@@ -1027,7 +1027,7 @@
         <volumeref ref="nitrogenAtmWall_logic"/>
         <positionref ref="nitrogenAtmWall_center"/>
       </physvol>
-
+<!--
       <physvol name="dumpPipeDS">
         <volumeref ref="dumpPipeDS_logic"/>
         <positionref ref="dumpPipeDS_center"/>
@@ -1042,7 +1042,7 @@
         <volumeref ref="waterDumpWaterTank_logic"/>
         <positionref ref="waterDumpWaterTank_center"/>
       </physvol>
-
+-->
     </volume>
   </structure>
 

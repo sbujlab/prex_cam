@@ -139,7 +139,7 @@
     <position unit="cm" name="dumpExt_trans" x="0" y="0" z="tempdet_center_z - hall_cylwall_radius + dumpExt_length/2 + dumpExt_offset"/> 
 
     <!-- Dump --> 
-
+    
     <!-- Dump Enclosure -->
     <constant name="dump_wall_thickness" value="12.0*i2cm"/>
     <constant name="dump_width" value="84.*i2cm + 2.*dump_wall_thickness"/>
@@ -259,6 +259,14 @@
     <constant name="waterDumpWaterTank_center_z" value="hall_cylwall_radius + dumpWaterTank_z_offset + dumpWaterTank_length/2"/>
     <position unit="cm" name="tubeDumpWaterTank_trans" x="0" y="0" z="0"/>
 
+    <!-- Water U Shaped Shielding -->
+    <constant name="uShld_height" value="dump_floor_distance_beam + 20"/>
+    <constant name="uShld_width" value="dumpUSSub_width"/>
+    <constant name="uShld_length" value="100"/>
+    <constant name="uShld_center_y" value="uShld_height/2 - dump_floor_distance_beam"/>
+    <constant name="uShld_center_z" value="uShld_length/2 + hall_cylwall_radius + ndFlangeUS_thickness + ndConeUS_length + neckDownOffset"/>
+    <position unit="cm" name="uShld_trans" x="0" y="-1.*uShld_center_y" z="0"/>
+
 
     <!-- Positions -->
     <position unit="cm" name="pos_global_coll_jacket" x="0" y="0"
@@ -274,6 +282,7 @@
     <position unit="cm" name="hall_floor_center" x="0" y="hall_floor_center_y" z="0"/>
     <position unit="cm" name="dumpExt_center" x="0" y="0" z="dumpExt_center_z"/> 
     <position unit="cm" name="dump_center" x="0" y="dump_center_y" z="dump_center_z"/>
+    <position unit="cm" name="uShld_center" x="0" y="uShld_center_y" z="uShld_center_z"/>
     <position unit="cm" name="dumpTempShield_left_center" x="-1.*dump_width/2 + dump_wall_thickness + dumpTempShieldUS_width/2" y="-1.*(dump_floor_distance_beam) + dumpTempShieldUS_height/2" z="hall_cylwall_radius + (98.0*i2cm + (dumpTempShieldUS_length/2))"/> <!-- old FIXME +dumpTempShieldMS_length+dumpTempShieldDS_length+dumpTempShieldGap_length)/2)"/> -->
   <position unit="cm" name="dumpTempShield_right_center" x="1.*dump_width/2 - dump_wall_thickness - dumpTempShieldUS_width/2" y="-1.*(dump_floor_distance_beam) + dumpTempShieldUS_height/2" z="hall_cylwall_radius + (98.0*i2cm + (dumpTempShieldUS_length/2))"/>
     <position unit="cm" name="ndFlangeUS_center" x="0" y="0" z="ndFlangeUS_center_z"/>
@@ -531,9 +540,21 @@
       <rotationref ref="identity"/>
     </subtraction>
 
+    <!-- Dump Water Shielding Block -->
+    <box lunit="cm" name="uShld_1" x="uShld_width" y="uShld_height" z="uShld_length"/>
+    <tube name="uShld_tube_sub" 
+          aunit="deg" startphi="0" deltaphi="360" 
+          lunit="cm" rmin="0" rmax="ndPipeUS_r_max + 10.0"
+          z="1.01*uShld_length"/> 
 
+    <subtraction name="uShld_solid">
+      <first ref="uShld_1"/>
+      <second ref="uShld_tube_sub"/>
+      <positionref ref="uShld_trans"/>
+      <rotationref ref="identity"/>
+    </subtraction>
+    
     <!-- Dump Temporary Shielding Blocks -->
-
     <box lunit="cm" name="boxDumpTempShieldBulkUS" x="dumpTempShieldUS_width" y="dumpTempShieldUS_height" z="dumpTempShieldUS_length"/>
     <box lunit="cm" name="boxDumpTempShieldBulkMS" x="dumpTempShieldMS_width" y="dumpTempShieldMS_height" z="dumpTempShieldMS_length"/>
     <box lunit="cm" name="boxDumpTempShieldBulkDS" x="dumpTempShieldDS_width" y="dumpTempShieldDS_height" z="dumpTempShieldDS_length"/>
@@ -573,6 +594,10 @@
           aunit="deg" startphi="0" deltaphi="360" 
           lunit="cm" rmin="ndFlangeUS_r_min" rmax="ndFlangeUS_r_max"
           z="ndFlangeUS_thickness"/> 
+    <tube name="ndFlangeDS_solid" 
+          aunit="deg" startphi="0" deltaphi="360" 
+          lunit="cm" rmin="ndFlangeDS_r_min" rmax="ndFlangeDS_r_max"
+          z="ndFlangeDS_thickness"/> 
 
     <cone name="ndConeUS_solid" lunit="cm"
           aunit="deg" startphi="0" deltaphi="360"
@@ -762,7 +787,15 @@
       <auxiliary auxtype="SensDet" auxvalue="Dump"/>
       <auxiliary auxtype="DetNo" auxvalue="9"/>
     </volume>
-    
+     
+    <volume name="uShld_logic">
+      <materialref ref="Water"/>
+      <solidref ref="uShld_solid"/>
+      <auxiliary auxtype="Color" auxvalue="Blue"/>
+      <auxiliary auxtype="SensDet" auxvalue="uShld"/>
+      <auxiliary auxtype="DetNo" auxvalue="52"/>
+    </volume>
+
     <volume name="dumpTempShield_left_logic">
       <materialref ref="Lead"/>
       <solidref ref="dumpTempShield_left_solid"/>
@@ -1041,6 +1074,11 @@
       <physvol name="waterDumpWaterTank">
         <volumeref ref="waterDumpWaterTank_logic"/>
         <positionref ref="waterDumpWaterTank_center"/>
+      </physvol>
+
+      <physvol name="uShld">
+        <volumeref ref="uShld_logic"/>
+        <positionref ref="uShld_center"/>
       </physvol>
 
     </volume>

@@ -894,7 +894,7 @@
     <volume name="logicMother">
       <materialref ref="Vacuum"/>
       <solidref ref="boxMother"/>
-
+<!--
       <physvol name="collimator">
         <volumeref ref="W_coll_logic"/>
         <positionref ref="pos_global_coll_cw70"/>
@@ -909,7 +909,7 @@
         <volumeref ref="coll_jacket_W_logic"/>
         <positionref ref="pos_global_coll_jacket"/>
       </physvol>
-
+-->
       <physvol name="target">
         <volumeref ref="target_logic"/>
         <positionref ref="target_center"/>
@@ -924,12 +924,12 @@
         <volumeref ref="target_diamond_DS_logic"/>
         <positionref ref="target_diamond_DS_center"/>
       </physvol>
-
+<!--
       <physvol name="kryp_shield">
         <volumeref ref="kryp_shield_logic"/>
         <positionref ref="kryp_shield_center"/>
       </physvol>
-
+-->
       <physvol name="tempdet">
         <volumeref ref="tempdet_logic"/>
         <positionref ref="tempdet_position"/>

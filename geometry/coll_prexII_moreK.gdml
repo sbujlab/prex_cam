@@ -37,7 +37,7 @@
  
     <!-- Kryptonite Shield -->
     
-    <constant name="kryp_shield_r_in" value="5.0 + 0.1"/>
+    <constant name="kryp_shield_r_in" value="5.0/2 + 0.1"/>
     <constant name="kryp_shield_r_out" value="120.5*i2cm - 1.0"/>
     <constant name="kryp_shield_thickness" value="10.0"/>
     <constant name="kryp_shield_center_z_position" value="0.0"/><!--center_cw70_coll + length_cw70_coll/2 + kryp_shield_thickness/2 + 10.0"/>-->

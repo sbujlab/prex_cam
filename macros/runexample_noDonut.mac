@@ -4,7 +4,7 @@
 #/tracking/storeTrajectory 1
 
 # This must be called before initialize
-/remoll/setgeofile /home/cameronc/gitdir/prex_cam/build/geometry/coll_prexII.gdml
+/remoll/setgeofile /home/cameronc/gitdir/prex_cam/build/geometry/coll_prexII_noDonut.gdml
 
 # This must be explicitly called
 /run/initialize
@@ -58,7 +58,7 @@
 # Specify random number seed - DO NOT USE THE SAME SEED OVER AND OVER AGAIN
 #/remoll/seed 123456
 
-/remoll/filename prex_dump_1M.root
+/remoll/filename prex_dump_noDonut_1M.root
 
 #/tracking/verbose 2
 /run/beamOn 1000000
