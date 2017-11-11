@@ -1,0 +1,8 @@
+make:
+	g++ -c rad_dose_base.cc -o rad_dose_base.o `root-config --cflags --glibs`
+	g++ rad_dose_base.o -o rad_dose_base `root-config --cflags --glibs`
+	rm rad_dose_base.o
+
+clean:
+	rm ./*.o
+	rm ./fom
