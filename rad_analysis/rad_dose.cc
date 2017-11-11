@@ -190,13 +190,11 @@ int main(Int_t argc,Char_t* argv[]) {
   Int_t nentries = (Int_t)Tmol->GetEntries();
 
   if (kSaveRootFile){
-  std::cout<<"test1 "<<std::endl;
     TString rootfilestatus="RECREATE";
     rootfile = new TFile(rootfilename, rootfilestatus);
     rootfile->cd();
   }
 
-  std::cout<<"test2 "<<std::endl;
   set_plot_style();
 
   gROOT->SetStyle("Plain");
@@ -216,33 +214,25 @@ int main(Int_t argc,Char_t* argv[]) {
   pidmass[22]=0.0;
   pidmass[2112]=939.565;//MeV
 
+  TH1D *HistoE_RadDet[n_detectors][n_particles];
   TH2D *HistoVertex_RadDet[n_detectors][n_particles];
   TH2D *HistoHit_RadDet[n_detectors][n_particles];
 
-  std::cout<<"test3 "<<std::endl;
   TString spid[n_particles]={"e-","#gamma","n0"};
-  std::cout<<"test4 "<<std::endl;
   TString sdet[n_detectors]={"dumpDet"};
-  std::cout<<"test5 "<<std::endl;
   
   for(Int_t i=0;i<n_detectors;i++){//vertices
     for(Int_t j=0;j<n_particles;j++){//particles
-  std::cout<<"test6 "<<i<<" "<<j<<std::endl;
+      HistoE_RadDet[i][j]=new TH1D(Form("HistoE_RadDet_det%d_p%d",i+1,j+1),Form(" %s into %s det; E (Gev); (Counts)",spid[j].Data(),sdet[i].Data()),100,0.1,300);
       HistoVertex_RadDet[i][j]=new TH2D(Form("HistoVertex_RadDet_det%d_p%d",i+1,j+1),Form(" %s into %s det; y (cm); z (cm); (W/#muA)",spid[j].Data(),sdet[i].Data()),500,-50.,50.,3500-1821,1821.,3500.);
-  std::cout<<"test7 "<<std::endl;
-      HistoHit_RadDet[i][j]=new TH2D(Form("HistoHit_RadDet_det%d_p%d",i+1,j+1),Form(" %s into %s det; x (cm); y (cm); (W/#muA)",spid[j].Data(),sdet[i].Data()),500,-250.,250.,500,-250.,250.);
-  std::cout<<"test8 "<<std::endl;
+      HistoHit_RadDet[i][j]=new TH2D(Form("HistoHit_RadDet_det%d_p%d",i+1,j+1),Form(" %s into %s det; x (cm); y (cm); (Counts)",spid[j].Data(),sdet[i].Data()),500,-250.,250.,500,-250.,250.);
     }
   }
 
   int detid    = -1;
   int pid      = -1;
-  Int_t vrtx   = -1; //index for vertex range
-  Int_t keid   = -1;
-  Int_t vrtx_z = -1;
 
-  std::cout<<"test9 "<<std::endl;
-  printf("Normalized to %d events \n",n_events);
+  //printf("Normalized to %d events \n",n_events);
   for (int i=0; i<nentries ; i++) {
     Tmol->GetEntry(i);
     for (int j = 0; j<fNGenDetHit; j++){
@@ -254,8 +244,9 @@ int main(Int_t argc,Char_t* argv[]) {
         if (kineE >= 0.1){
           flux_local[detid][pid]++;
           power_local[detid][pid]+=kineE;
-          HistoVertex_RadDet[detid][pid]->Fill(fGenDetHit_VY[j]*100,fGenDetHit_VZ[j]*100,kineE/n_events);
-          HistoHit_RadDet[detid][pid]->Fill(fGenDetHit_X[j]*100,fGenDetHit_Y[j]*100,kineE/n_events);
+          HistoE_RadDet[detid][pid]->Fill(kineE);
+          HistoVertex_RadDet[detid][pid]->Fill(fGenDetHit_VY[j]*100,fGenDetHit_VZ[j]*100,kineE);
+          HistoHit_RadDet[detid][pid]->Fill(fGenDetHit_X[j]*100,fGenDetHit_Y[j]*100,kineE);
         }
       }
     }
@@ -347,8 +338,8 @@ int main(Int_t argc,Char_t* argv[]) {
     sprintf(line1," ");//empty previous values
     for(Int_t k=0;k<n_detectors;k++){//detector  // Suming over detectors doesn't really serve a purpose.....
  	      sum+=power_local[k][i];
-        printf("%12.3E",sum/n_events);
-	      sprintf(line1,"%s %12.3E",line1,sum/n_events);
+        printf("%12.3E",sum);///n_events);
+	      sprintf(line1,"%s %12.3E",line1,sum);///n_events);
 	      sum=0;
     }
     printf("\n");
@@ -375,8 +366,8 @@ int main(Int_t argc,Char_t* argv[]) {
     sprintf(line1," ");//empty previous values
     for(Int_t k=0;k<n_detectors;k++){//detector
 	    sum+=flux_local[k][i];
-      printf("%12.3E",sum*6.241e+12/n_events);
-	    sprintf(line1,"%s %12.3E",line1,sum*6.241e+12/n_events);
+      printf("%12.3E",sum);//*6.241e+12/n_events);
+	    sprintf(line1,"%s %12.3E",line1,sum);//*6.241e+12/n_events);
 	    sum=0;
     }
     printf("\n");
