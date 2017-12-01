@@ -16,7 +16,6 @@ remollRunData::remollRunData()
     fGenName[0]  = '\0';
     fHostName[0] = '\0';
 }
-
 remollRunData::~remollRunData(){
 }
 

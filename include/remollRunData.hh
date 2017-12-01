@@ -44,21 +44,21 @@ class remollRunData : public TObject {
 	remollTextFile GetGDMLFile(int i){ return fGDMLFiles[i]; }
 
 	void Print();
-
-	TTimeStamp fRunTime;
-
-	long int  fNthrown;
+  
+  TTimeStamp fRunTime;
+  
+  long int  fNthrown;
 	unsigned int  fSeed;
 	double fBeamE;
 	char fGenName[__RUNSTR_LEN];
-
-	char fHostName[__RUNSTR_LEN];
+  
+  char fHostName[__RUNSTR_LEN];
 	char fRunPath[__RUNSTR_LEN];
-
-	remollTextFile              fMacro;
+  
+  remollTextFile              fMacro;
 	std::vector<remollTextFile> fGDMLFiles;
-
-	std::vector<filedata_t> fMagData;
+  
+  std::vector<filedata_t> fMagData;
 
 	ClassDef(remollRunData, 1);
 };

@@ -135,20 +135,25 @@ int main(Int_t argc,Char_t* argv[]) {
   TChain * Tmol =new TChain("T");
   //Cameron Clarke runs:
   //input info:
-  const int n_mills = 18;// FIXME number of million events
+  const int n_mills = 1;// FIXME number of million events
   int n_files;
-  n_files = n_mills;//atoi(argv[2]) - 1;
+  n_files = atoi(argv[2]) - 1;
   Int_t n_events = n_mills*1e6;
   Int_t beamcurrent = 85;//uA
-  TString added_file_array[n_mills]={""};//200]={""};
-  for (int v=0 ; v < n_files ; v++){ 
+  TString added_file_array[200]={""};
+  for (int v=0 ; v <= n_files ; v++){ 
     int r = v;
     ostringstream temp_str_stream2;
     ostringstream temp_str_stream3;
     temp_str_stream2<<r;
     TString vS;
     vS=temp_str_stream2.str();
-    temp_str_stream3<<"/home/cameronc/gitdir/prex_cam/build/out_"<<argv[1]<<"_"<<v+1<<"/prex_dump_"<<argv[1]<<"_"<<n_mills<<"M.root";
+    if (v==0){
+      temp_str_stream3<<"/home/cameronc/gitdir/prex_cam/build/prex_dump_"<<argv[1]<<"_"<<n_mills<<"M/prex_dump_"<<argv[1]<<"_"<<n_mills<<"M.root";
+    }
+    else {
+      temp_str_stream3<<"/home/cameronc/gitdir/prex_cam/build/prex_dump_"<<argv[1]<<"_"<<n_mills<<"M/prex_dump_"<<argv[1]<<"_"<<n_mills<<"M_"<<vS<<".root";
+    }
     added_file_array[v]=temp_str_stream3.str();
     Tmol->Add(added_file_array[v]);
     std::cout<<"File: "<<added_file_array[v]<<std::endl;
