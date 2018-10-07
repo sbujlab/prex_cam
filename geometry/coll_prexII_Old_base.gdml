@@ -275,7 +275,7 @@
     <position unit="cm" name="dumpExt_center" x="0" y="0" z="dumpExt_center_z"/> 
     <position unit="cm" name="dump_center" x="0" y="dump_center_y" z="dump_center_z"/>
     <position unit="cm" name="dumpTempShield_left_center" x="-1.*dump_width/2 + dump_wall_thickness + dumpTempShieldUS_width/2" y="-1.*(dump_floor_distance_beam) + dumpTempShieldUS_height/2" z="hall_cylwall_radius + (98.0*i2cm + (dumpTempShieldUS_length/2))"/> <!-- old FIXME +dumpTempShieldMS_length+dumpTempShieldDS_length+dumpTempShieldGap_length)/2)"/> -->
-  <position unit="cm" name="dumpTempShield_right_center" x="1.*dump_width/2 - dump_wall_thickness - dumpTempShieldUS_width/2" y="-1.*(dump_floor_distance_beam) + dumpTempShieldUS_height/2" z="hall_cylwall_radius + (98.0*i2cm + (dumpTempShieldUS_length/2))"/>
+    <position unit="cm" name="dumpTempShield_right_center" x="1.*dump_width/2 - dump_wall_thickness - dumpTempShieldUS_width/2" y="-1.*(dump_floor_distance_beam) + dumpTempShieldUS_height/2" z="hall_cylwall_radius + (98.0*i2cm + (dumpTempShieldUS_length/2))"/>
     <position unit="cm" name="ndFlangeUS_center" x="0" y="0" z="ndFlangeUS_center_z"/>
     <position unit="cm" name="ndConeUS_center" x="0" y="0" z="ndConeUS_center_z"/>
     <position unit="cm" name="ndPipeUS_center" x="0" y="0" z="ndPipeUS_center_z"/>
@@ -961,7 +961,7 @@
         <volumeref ref="dump_logic"/>
         <positionref ref="dump_center"/>
       </physvol>
-<!--
+
       <physvol name="dumpTempShield_left">
         <volumeref ref="dumpTempShield_left_logic"/>
         <positionref ref="dumpTempShield_left_center"/>
@@ -971,7 +971,7 @@
         <volumeref ref="dumpTempShield_right_logic"/>
         <positionref ref="dumpTempShield_right_center"/>
       </physvol>
--->
+
       <physvol name="ndFlangeUS">
         <volumeref ref="ndFlangeUS_logic"/>
         <positionref ref="ndFlangeUS_center"/>

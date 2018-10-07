@@ -3,7 +3,7 @@
 #
 /vis/scene/create
 
-
+/vis/geometry/set/forceLineSegmentsPerCircle telescope_logic 1 8
 #
 # Declare that the world volume should be added to the scene
 #
@@ -54,6 +54,7 @@
 #New cutaway plane setting
 /vis/viewer/set/cutawayMode intersection
 /vis/viewer/addCutawayPlane -0.05 0.0 0.0 m 1.0 0.0 0.0
+/vis/viewer/pan 2 35.5
 #old value
 #/vis/viewer/set/lightsMove with-camera
 #

@@ -37,7 +37,7 @@ remollIO::remollIO()
 {
     //  Set arrays to 0
     fNGenDetHit = 0;
-    fNGenDetSum = 0;
+//    fNGenDetSum = 0;
 
     InitializeTree();
 
@@ -146,13 +146,13 @@ void remollIO::InitializeTree()
     fTree->Branch("hit.m",    &fGenDetHit_M,   "hit.m[hit.n]/D");
 
     fTree->Branch("hit.colCut",    &fCollCut,     "hit.colCut/I");
-
+/*
     // GenericDetectorSum
     fTree->Branch("sum.n",    &fNGenDetSum,     "sum.n/I");
     fTree->Branch("sum.det",  &fGenDetSum_det,  "sum.det[sum.n]/I");
     fTree->Branch("sum.vid",  &fGenDetSum_id,   "sum.vid[sum.n]/I");
     fTree->Branch("sum.edep", &fGenDetSum_edep, "sum.edep[sum.n]/D");
-
+*/
     G4cout << "Initialized tree." << G4endl;
 }
 
@@ -173,7 +173,7 @@ void remollIO::Flush()
 {
     //  Set arrays to 0
     fNGenDetHit = 0;
-    fNGenDetSum = 0;
+//    fNGenDetSum = 0;
     fCollCut = 1; // default
 }
 
@@ -324,7 +324,7 @@ void remollIO::AddGenericDetectorHit(remollGenericDetectorHit *hit)
 
 void remollIO::AddGenericDetectorSum(remollGenericDetectorSum *hit)
 {
-    int n = fNGenDetSum;
+/*    int n = fNGenDetSum;
     if( n > __IO_MAXHIT ){
         G4cerr << "WARNING: " << __PRETTY_FUNCTION__ << " line " << __LINE__ << ":  Buffer size exceeded!" << G4endl;
         return;
@@ -335,7 +335,7 @@ void remollIO::AddGenericDetectorSum(remollGenericDetectorSum *hit)
     fGenDetSum_id[n]   = hit->fCopyID;
 
     fNGenDetSum++;
-}
+*/}
 
 /*---------------------------------------------------------------------------------*/
 

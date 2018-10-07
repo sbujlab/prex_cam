@@ -13,7 +13,7 @@
    Additions to the physical constants into remollPhysicalConstants.hh
 */
 
-const double gDefaultBeamE   = 1.05*GeV;
+const double gDefaultBeamE   = 1.0*GeV;
 const double gDefaultBeamPol = 0.85;
 const double gDefaultBeamCur = 75e-6*ampere;
 

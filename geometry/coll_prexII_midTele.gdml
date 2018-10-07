@@ -41,6 +41,7 @@
     <constant name="kryp_shield_r_out" value="120.5*i2cm - 1.0"/>
     <constant name="kryp_shield_thickness" value="10.0"/>
     <constant name="kryp_shield_center_z_position" value="0.0"/><!--center_cw70_coll + length_cw70_coll/2 + kryp_shield_thickness/2 + 10.0"/>-->
+    <position unit="cm" name="kryp_shield_sub_trans" x="0" y="0" z="0"/>
     
     <!-- Collimator dimensions  -->
     
@@ -130,10 +131,197 @@
     <constant name="tempdet_thickness" value="0.1"/>
     <constant name="tempdet_center_z" value="hall_cylwall_radius - 139.76"/>
 
+    <!-- US Telescoping Beampipe -->
+    <constant name="teleFlangeUS_frontFace_z" value="237.54"/>
+    
+    <constant name="teleFlangeUS_r_min" value="6.985/2"/>
+    <constant name="teleFlangeUS_r_max" value="21.59/2"/> 
+    <constant name="teleFlangeUS_thickness" value="1.905"/> 
+    <constant name="teleFlangeUS_center_z" value="teleFlangeUS_frontFace_z + teleFlangeUS_thickness/2"/>
+
+    <constant name="telePipePre_r_min" value="7.62/2"/> <!-- This is a placeholder septum beampipe - comes in front of the FlangeUS actually, but center_z is defined wrt FlangeUS for realism -->
+    <constant name="telePipePre_r_max" value="7.62/2 + 0.32125"/>
+    <constant name="telePipePre_length" value="135.509"/>
+    <constant name="telePipePre_center_z" value="teleFlangeUS_center_z - telePipePre_length/2"/>
+
+    <position name="teleFlangeUS_trans" unit="cm" x="0" y="0" z="telePipePre_length/2"/> 
+    
+    <constant name="telePipe1_r_min" value="7.62/2"/> 
+    <constant name="telePipe1_r_max" value="8.255/2"/> 
+    <constant name="telePipe1_length" value="28.02"/>
+    <constant name="telePipe1_trans_z" value="telePipePre_length/2 + telePipe1_length/2"/>
+    <position name="telePipe1_trans" unit="cm" x="0" y="0" z="telePipe1_trans_z"/> 
+    
+    <constant name="teleOverlap1_r_min" value="1.001*7.62/2"/> <!-- Overlap between Pipe 1 and Pipe 2 --> 
+    <constant name="teleOverlap1_r_max" value="0.999*8.9/2"/> 
+    <constant name="teleOverlap1_thickness" value="0.635"/> 
+    <constant name="teleOverlap1_trans_z" value="telePipe1_trans_z + telePipe1_length/2 - teleOverlap1_thickness/2"/>
+    <position name="teleOverlap1_trans" unit="cm" x="0" y="0" z="teleOverlap1_trans_z"/> 
+
+    <constant name="telePipe2_r_min" value="8.255/2"/> 
+    <constant name="telePipe2_r_max" value="8.9/2"/> 
+    <constant name="telePipe2_length" value="19.01"/>
+    <constant name="telePipe2_trans_z" value="teleOverlap1_trans_z + teleOverlap1_thickness/2 + telePipe2_length/2"/>
+    <position name="telePipe2_trans" unit="cm" x="0" y="0" z="telePipe2_trans_z"/> 
+    
+    <constant name="teleOverlap2_r_min" value="1.001*8.255/2"/>
+    <constant name="teleOverlap2_r_max" value="0.999*9.525/2"/>
+    <constant name="teleOverlap2_thickness" value="0.635"/>
+    <constant name="teleOverlap2_trans_z" value="telePipe2_trans_z + telePipe2_length/2 - teleOverlap2_thickness/2"/>
+    <position name="teleOverlap2_trans" unit="cm" x="0" y="0" z="teleOverlap2_trans_z"/>
+
+    <constant name="telePipe3_r_min" value="8.9/2"/> 
+    <constant name="telePipe3_r_max" value="9.525/2"/> 
+    <constant name="telePipe3_length" value="15.24"/>
+    <constant name="telePipe3_trans_z" value="teleOverlap2_trans_z + teleOverlap2_thickness/2 + telePipe3_length/2"/>
+    <position name="telePipe3_trans" unit="cm" x="0" y="0" z="telePipe3_trans_z"/>
+    
+    <constant name="teleOverlap3_r_min" value="1.001*8.9/2"/>
+    <constant name="teleOverlap3_r_max" value="0.999*10.16/2"/>
+    <constant name="teleOverlap3_thickness" value="0.635"/>
+    <constant name="teleOverlap3_trans_z" value="telePipe3_trans_z + telePipe3_length/2 - teleOverlap3_thickness/2"/>
+    <position name="teleOverlap3_trans" unit="cm" x="0" y="0" z="teleOverlap3_trans_z"/>
+
+    <constant name="telePipe4_r_min" value="9.525/2"/> 
+    <constant name="telePipe4_r_max" value="10.16/2"/> 
+    <constant name="telePipe4_length" value="37.028"/>
+    <constant name="telePipe4_trans_z" value="teleOverlap3_trans_z + teleOverlap3_thickness/2 + telePipe4_length/2"/>
+    <position name="telePipe4_trans" unit="cm" x="0" y="0" z="telePipe4_trans_z"/>
+    
+    <constant name="teleOverlap4_r_min" value="1.001*9.525/2"/>
+    <constant name="teleOverlap4_r_max" value="0.999*12.7/2"/>
+    <constant name="teleOverlap4_thickness" value="2.54"/>
+    <constant name="teleOverlap4_trans_z" value="telePipe4_trans_z + telePipe4_length/2 - teleOverlap4_thickness/2"/>
+    <position name="teleOverlap4_trans" unit="cm" x="0" y="0" z="teleOverlap4_trans_z"/>
+
+    <constant name="telePipe5_r_min" value="12.065/2"/> 
+    <constant name="telePipe5_r_max" value="12.7/2"/> 
+    <constant name="telePipe5_length" value="23.416"/>
+    <constant name="telePipe5_trans_z" value="teleOverlap4_trans_z + teleOverlap4_thickness/2 + telePipe5_length/2"/>
+    <position name="telePipe5_trans" unit="cm" x="0" y="0" z="telePipe5_trans_z"/>
+    
+    <constant name="teleOverlap5_r_min" value="1.001*12.065/2"/> 
+    <constant name="teleOverlap5_r_max" value="0.999*15.24/2"/>
+    <constant name="teleOverlap5_thickness" value="2.54"/> 
+    <constant name="teleOverlap5_trans_z" value="telePipe5_trans_z + telePipe5_length/2 - teleOverlap5_thickness/2"/>
+    <position name="teleOverlap5_trans" unit="cm" x="0" y="0" z="teleOverlap5_trans_z"/>
+
+    <constant name="telePipe6_r_min" value="14.605/2"/> 
+    <constant name="telePipe6_r_max" value="15.24/2"/> 
+    <constant name="telePipe6_length" value="27.623"/>
+    <constant name="telePipe6_trans_z" value="teleOverlap5_trans_z + teleOverlap5_thickness/2 + telePipe6_length/2"/>
+    <position name="telePipe6_trans" unit="cm" x="0" y="0" z="telePipe6_trans_z"/>
+    
+    <constant name="teleOverlap6_r_min" value="1.001*14.605/2"/> 
+    <constant name="teleOverlap6_r_max" value="0.999*20.32/2"/> 
+    <constant name="teleOverlap6_thickness" value="2.54"/> 
+    <constant name="teleOverlap6_trans_z" value="telePipe6_trans_z + telePipe6_length/2 - teleOverlap6_thickness/2"/>
+    <position name="teleOverlap6_trans" unit="cm" x="0" y="0" z="teleOverlap6_trans_z"/>
+
+    <constant name="telePipe7_r_min" value="19.837/2"/> 
+    <constant name="telePipe7_r_max" value="20.32/2"/> 
+    <constant name="telePipe7_length" value="9.449"/>
+    <constant name="telePipe7_trans_z" value="teleOverlap6_trans_z + teleOverlap6_thickness/2 + telePipe7_length/2"/>
+    <position name="telePipe7_trans" unit="cm" x="0" y="0" z="telePipe7_trans_z"/>
+    
+    <constant name="teleFlangeDS_r_min" value="1.001*19.837/2"/> 
+    <constant name="teleFlangeDS_r_max" value="34.29/2"/> 
+    <constant name="teleFlangeDS_thickness" value="5.08"/> <!-- Placeholder, as are all flange and overlap lengths -->
+    <constant name="teleFlangeDS_trans_z" value="telePipe7_trans_z + telePipe7_length/2"/>
+    <position name="teleFlangeDS_trans" unit="cm" x="0" y="0" z="teleFlangeDS_trans_z"/> 
+
+    <constant name="telescope_center_z" value="telePipePre_center_z"/>
+
+    <!-- Gatevalve (plate, hole, donut around hole) -->
+    <constant name="gateValve_thickness" value=""/>
+
+    <constant name="gateValveHole_r_min" value="0.0"/>
+    <constant name="gateValveHole_r_max" value="20.0/2"/>
+    <constant name="gateValveDonut_r_min" value="0.999*23.18/2"/>
+    <constant name="gateValveDonut_r_max" value="31.0/2"/>
+    <constant name="gateValveDonut_thickness" value="16.0"/>
+    <constant name="gateValvePlate_thickness" value="7.8"/>
+    <constant name="gateValvePlate_width" value="33.6"/>
+    <constant name="gateValvePlate_height" value="44.3+46.0"/>
+    <constant name="gateValvePlate_trans_y" value="(44.3-46.0)/2"/>
+    <constant name="gateValve_center_z" value="telescope_center_z + teleFlangeDS_trans_z + teleFlangeDS_thickness/2 + gateValveDonut_thickness/2"/>
+    <position name="gateValvePlate_trans" unit="cm" x="0" y="gateValvePlate_trans_y" z="0"/> 
+    <position name="gateValveHole_trans" unit="cm" x="0" y="0" z="0"/> 
+
+    <!-- Midwall Beampipe -->
+
+    <constant name="midTeleFlangeUS_r_min" value="19.837/2"/>
+    <constant name="midTeleFlangeUS_r_max" value="34.29/2"/> 
+    <constant name="midTeleFlangeUS_thickness" value="5.08"/> 
+    <constant name="midTeleFlangeUS_center_z" value="gateValve_center_z + gateValveDonut_thickness/2 + midTeleFlangeUS_thickness/2"/>
+    
+    <constant name="midTelePipe1_r_min" value="8.125*i2cm/2"/> 
+    <constant name="midTelePipe1_r_max" value="8.25*i2cm/2"/> 
+    <constant name="midTelePipe1_length" value="37.1875*i2cm"/>
+    <constant name="midTelePipe1_trans_z" value="midTeleFlangeUS_thickness/2 + midTelePipe1_length/2"/>
+    <position name="midTelePipe1_trans" unit="cm" x="0" y="0" z="midTelePipe1_trans_z"/> 
+    
+    <constant name="midTeleOverlap1_r_min" value="1.001*8.125*i2cm/2"/> <!-- Overlap between Pipe 1 and Pipe 2 --> 
+    <constant name="midTeleOverlap1_r_max" value="0.999*10.0*i2cm/2"/> 
+    <constant name="midTeleOverlap1_thickness" value="0.635/2"/> 
+    <constant name="midTeleOverlap1_trans_z" value="midTelePipe1_trans_z + midTelePipe1_length/2 - midTeleOverlap1_thickness/2"/>
+    <position name="midTeleOverlap1_trans" unit="cm" x="0" y="0" z="midTeleOverlap1_trans_z"/> 
+
+    <constant name="midTelePipe2_r_min" value="9.875*i2cm/2"/> 
+    <constant name="midTelePipe2_r_max" value="10.0*i2cm/2"/> 
+    <constant name="midTelePipe2_length" value="12.0*i2cm"/>
+    <constant name="midTelePipe2_trans_z" value="midTeleOverlap1_trans_z + midTeleOverlap1_thickness/2 + midTelePipe2_length/2"/>
+    <position name="midTelePipe2_trans" unit="cm" x="0" y="0" z="midTelePipe2_trans_z"/> 
+    
+    <constant name="midTeleOverlap2_r_min" value="1.001*9.875*i2cm/2"/>
+    <constant name="midTeleOverlap2_r_max" value="0.999*13.0*i2cm/2"/>
+    <constant name="midTeleOverlap2_thickness" value="0.635/2"/>
+    <constant name="midTeleOverlap2_trans_z" value="midTelePipe2_trans_z + midTelePipe2_length/2 - midTeleOverlap2_thickness/2"/>
+    <position name="midTeleOverlap2_trans" unit="cm" x="0" y="0" z="midTeleOverlap2_trans_z"/>
+
+    <constant name="midTelePipe3_r_min" value="12.0*i2cm/2"/> 
+    <constant name="midTelePipe3_r_max" value="13.0*i2cm/2"/> 
+    <constant name="midTelePipe3_length" value="41.8125*i2cm"/>
+    <constant name="midTelePipe3_trans_z" value="midTeleOverlap2_trans_z + midTeleOverlap2_thickness/2 + midTelePipe3_length/2"/>
+    <position name="midTelePipe3_trans" unit="cm" x="0" y="0" z="midTelePipe3_trans_z"/>
+    
+    <constant name="midTeleOverlap3_r_min" value="1.001*12.0*i2cm/2"/>
+    <constant name="midTeleOverlap3_r_max" value="0.999*25.0*i2cm/2"/>
+    <constant name="midTeleOverlap3_thickness" value="0.635/2"/>
+    <constant name="midTeleOverlap3_trans_z" value="midTelePipe3_trans_z + midTelePipe3_length/2 - midTeleOverlap3_thickness/2"/>
+    <position name="midTeleOverlap3_trans" unit="cm" x="0" y="0" z="midTeleOverlap3_trans_z"/>
+
+    <constant name="midTelePipe4_r_min" value="24.0*i2cm/2"/> 
+    <constant name="midTelePipe4_r_max" value="25.0*i2cm/2"/> 
+    <constant name="midTelePipe4_length" value="217.0*i2cm"/>
+    <constant name="midTelePipe4_trans_z" value="midTeleOverlap3_trans_z + midTeleOverlap3_thickness/2 + midTelePipe4_length/2"/>
+    <position name="midTelePipe4_trans" unit="cm" x="0" y="0" z="midTelePipe4_trans_z"/>
+    
+    <constant name="midTeleOverlap4_r_min" value="1.001*24.0*i2cm/2"/>
+    <constant name="midTeleOverlap4_r_max" value="40.0*i2cm/2"/>
+    <constant name="midTeleOverlap4_thickness" value="0.635/2"/>
+    <constant name="midTeleOverlap4_trans_z" value="midTelePipe4_trans_z + midTelePipe4_length/2 - midTeleOverlap4_thickness/2"/>
+    <position name="midTeleOverlap4_trans" unit="cm" x="0" y="0" z="midTeleOverlap4_trans_z"/>
+
+    <constant name="midTelePipe5_r_min" value="36.0*i2cm/2"/> 
+    <constant name="midTelePipe5_r_max" value="37.0*i2cm/2"/> 
+    <constant name="midTelePipe5_length" value="216.375*i2cm"/>
+    <constant name="midTelePipe5_trans_z" value="midTeleOverlap4_trans_z + midTeleOverlap4_thickness/2 + midTelePipe5_length/2"/>
+    <position name="midTelePipe5_trans" unit="cm" x="0" y="0" z="midTelePipe5_trans_z"/>
+ 
+    <constant name="midTeleFlangeDS_r_min" value="36.0*i2cm/2"/>
+    <constant name="midTeleFlangeDS_r_max" value="43.0*i2cm/2"/> 
+    <constant name="midTeleFlangeDS_thickness" value="0.3175"/> 
+    <constant name="midTeleFlangeDS_trans_z" value="midTelePipe5_trans_z + midTelePipe5_length/2 + midTeleFlangeDS_thickness/2"/>
+    <position name="midTeleFlangeDS_trans" unit="cm" x="0" y="0" z="midTeleFlangeDS_trans_z"/>
+
+    <constant name="midTele_center_z" value="midTeleFlangeUS_center_z"/>
+
+
     <!-- Dump Extension Beampipe -->
     <constant name="dumpExt_r_min" value="18.0*i2cm"/>
     <constant name="dumpExt_r_max" value="19.5*i2cm"/>
-    <constant name="dumpExt_length" value="1335.0875"/>
+    <constant name="dumpExt_length" value="1335.0875 - 450.0"/>
     <constant name="dumpExt_offset" value="0"/>
     <constant name="dumpExt_center_z" value="hall_cylwall_radius - dumpExt_length/2 - dumpExt_offset"/>
     <position unit="cm" name="dumpExt_trans" x="0" y="0" z="tempdet_center_z - hall_cylwall_radius + dumpExt_length/2 + dumpExt_offset"/> 
@@ -272,10 +460,13 @@
     <position unit="cm" name="hall_top_center" x="0" y="hall_top_center_y" z="0"/>
     <position unit="cm" name="hall_cylwall_center" x="0" y="hall_cylwall_center_y" z="0"/>
     <position unit="cm" name="hall_floor_center" x="0" y="hall_floor_center_y" z="0"/>
+    <position unit="cm" name="telescope_center" x="0" y="0" z="telescope_center_z"/> 
+    <position unit="cm" name="gateValve_center" x="0" y="0" z="gateValve_center_z"/> 
+    <position unit="cm" name="midTele_center" x="0" y="0" z="midTele_center_z"/> 
     <position unit="cm" name="dumpExt_center" x="0" y="0" z="dumpExt_center_z"/> 
     <position unit="cm" name="dump_center" x="0" y="dump_center_y" z="dump_center_z"/>
     <position unit="cm" name="dumpTempShield_left_center" x="-1.*dump_width/2 + dump_wall_thickness + dumpTempShieldUS_width/2" y="-1.*(dump_floor_distance_beam) + dumpTempShieldUS_height/2" z="hall_cylwall_radius + (98.0*i2cm + (dumpTempShieldUS_length/2))"/> <!-- old FIXME +dumpTempShieldMS_length+dumpTempShieldDS_length+dumpTempShieldGap_length)/2)"/> -->
-  <position unit="cm" name="dumpTempShield_right_center" x="1.*dump_width/2 - dump_wall_thickness - dumpTempShieldUS_width/2" y="-1.*(dump_floor_distance_beam) + dumpTempShieldUS_height/2" z="hall_cylwall_radius + (98.0*i2cm + (dumpTempShieldUS_length/2))"/>
+    <position unit="cm" name="dumpTempShield_right_center" x="1.*dump_width/2 - dump_wall_thickness - dumpTempShieldUS_width/2" y="-1.*(dump_floor_distance_beam) + dumpTempShieldUS_height/2" z="hall_cylwall_radius + (98.0*i2cm + (dumpTempShieldUS_length/2))"/>
     <position unit="cm" name="ndFlangeUS_center" x="0" y="0" z="ndFlangeUS_center_z"/>
     <position unit="cm" name="ndConeUS_center" x="0" y="0" z="ndConeUS_center_z"/>
     <position unit="cm" name="ndPipeUS_center" x="0" y="0" z="ndPipeUS_center_z"/>
@@ -458,10 +649,23 @@
     
     <!-- Kryptonite collimator shielding, in place of full hall shielding array -->
     <tube aunit="deg" startphi="0" deltaphi="360"
-          lunit="cm" name="kryp_shield_solid"
+          lunit="cm" name="kryp_shield_solid_1"
           rmin="kryp_shield_r_in"
           rmax="kryp_shield_r_out"
           z="kryp_shield_thickness"/>
+    
+    <tube aunit="deg" startphi="0" deltaphi="360"
+          lunit="cm" name="kryp_shield_sub_1"
+          rmin="0.999*telePipePre_r_min"
+          rmax="1.001*telePipePre_r_max"
+          z="1.05*kryp_shield_thickness"/>
+    
+    <union name ="kryp_shield_solid">
+      <first ref="kryp_shield_solid_1"/>
+      <second ref="kryp_shield_sub_1"/>
+      <positionref ref="kryp_shield_sub_trans"/>
+      <rotationref ref="identity"/>
+    </union>
 
     <!-- Temp Detector -->
     <box lunit="cm" name="tempdet_solid"
@@ -491,6 +695,350 @@
       <second ref="hall_dumphole"/>
       <positionref ref="hall_dumphole_sub_trans"/>
     </subtraction>
+
+    <!-- US Telescoping Beam Pipe -->
+
+    <tube name="telePipePre_solid" aunit="deg" startphi="0" deltaphi="360" lunit="cm" 
+          rmin="telePipePre_r_min" 
+          rmax="telePipePre_r_max" 
+          z="telePipePre_length"/>
+    
+    <tube name="teleFlangeUS_solid" aunit="deg" startphi="0" deltaphi="360" lunit="cm" 
+          rmin="teleFlangeUS_r_min" 
+          rmax="teleFlangeUS_r_max" 
+          z="teleFlangeUS_thickness"/> 
+
+    <tube name="telePipe1_solid" aunit="deg" startphi="0" deltaphi="360" lunit="cm" 
+          rmin="telePipe1_r_min" 
+          rmax="telePipe1_r_max" 
+          z="telePipe1_length"/>
+    
+    <tube name="teleOverlap1_solid" aunit="deg" startphi="0" deltaphi="360" lunit="cm" 
+          rmin="teleOverlap1_r_min" 
+          rmax="teleOverlap1_r_max" 
+          z="teleOverlap1_thickness"/> 
+
+    <tube name="telePipe2_solid" aunit="deg" startphi="0" deltaphi="360" lunit="cm" 
+          rmin="telePipe2_r_min" 
+          rmax="telePipe2_r_max" 
+          z="telePipe2_length"/>
+    
+    <tube name="teleOverlap2_solid" aunit="deg" startphi="0" deltaphi="360" lunit="cm" 
+          rmin="teleOverlap2_r_min" 
+          rmax="teleOverlap2_r_max" 
+          z="teleOverlap2_thickness"/> 
+
+    <tube name="telePipe3_solid" aunit="deg" startphi="0" deltaphi="360" lunit="cm" 
+          rmin="telePipe3_r_min" 
+          rmax="telePipe3_r_max" 
+          z="telePipe3_length"/>
+    
+    <tube name="teleOverlap3_solid" aunit="deg" startphi="0" deltaphi="360" lunit="cm" 
+          rmin="teleOverlap3_r_min" 
+          rmax="teleOverlap3_r_max" 
+          z="teleOverlap3_thickness"/> 
+
+    <tube name="telePipe4_solid" aunit="deg" startphi="0" deltaphi="360" lunit="cm" 
+          rmin="telePipe4_r_min" 
+          rmax="telePipe4_r_max" 
+          z="telePipe4_length"/>
+    
+    <tube name="teleOverlap4_solid" aunit="deg" startphi="0" deltaphi="360" lunit="cm" 
+          rmin="teleOverlap4_r_min" 
+          rmax="teleOverlap4_r_max" 
+          z="teleOverlap4_thickness"/> 
+
+    <tube name="telePipe5_solid" aunit="deg" startphi="0" deltaphi="360" lunit="cm" 
+          rmin="telePipe5_r_min" 
+          rmax="telePipe5_r_max" 
+          z="telePipe5_length"/>
+    
+    <tube name="teleOverlap5_solid" aunit="deg" startphi="0" deltaphi="360" lunit="cm" 
+          rmin="teleOverlap5_r_min" 
+          rmax="teleOverlap5_r_max" 
+          z="teleOverlap5_thickness"/> 
+
+    <tube name="telePipe6_solid" aunit="deg" startphi="0" deltaphi="360" lunit="cm" 
+          rmin="telePipe6_r_min" 
+          rmax="telePipe6_r_max" 
+          z="telePipe6_length"/>
+    
+    <tube name="teleOverlap6_solid" aunit="deg" startphi="0" deltaphi="360" lunit="cm" 
+          rmin="teleOverlap6_r_min" 
+          rmax="teleOverlap6_r_max" 
+          z="teleOverlap6_thickness"/> 
+
+    <tube name="telePipe7_solid" aunit="deg" startphi="0" deltaphi="360" lunit="cm" 
+          rmin="telePipe7_r_min" 
+          rmax="telePipe7_r_max" 
+          z="telePipe7_length"/>
+    
+    <tube name="teleFlangeDS_solid" aunit="deg" startphi="0" deltaphi="360" lunit="cm" 
+          rmin="teleFlangeDS_r_min" 
+          rmax="teleFlangeDS_r_max" 
+          z="teleFlangeDS_thickness"/> 
+
+    <union name ="tele_solid_1">
+      <first ref="telePipePre_solid"/>
+      <second ref="teleFlangeUS_solid"/>
+      <positionref ref="teleFlangeUS_trans"/>
+      <rotationref ref="identity"/>
+    </union>
+
+    <union name ="tele_solid_2">
+      <first ref="tele_solid_1"/>
+      <second ref="telePipe1_solid"/>
+      <positionref ref="telePipe1_trans"/>
+      <rotationref ref="identity"/>
+    </union>
+
+    <union name ="tele_solid_3">
+      <first ref="tele_solid_2"/>
+      <second ref="teleOverlap1_solid"/>
+      <positionref ref="teleOverlap1_trans"/>
+      <rotationref ref="identity"/>
+    </union>
+
+    <union name ="tele_solid_4">
+      <first ref="tele_solid_3"/>
+      <second ref="telePipe2_solid"/>
+      <positionref ref="telePipe2_trans"/>
+      <rotationref ref="identity"/>
+    </union>
+
+    <union name ="tele_solid_5">
+      <first ref="tele_solid_4"/>
+      <second ref="teleOverlap2_solid"/>
+      <positionref ref="teleOverlap2_trans"/>
+      <rotationref ref="identity"/>
+    </union>
+ 
+    <union name ="tele_solid_6">
+      <first ref="tele_solid_5"/>
+      <second ref="telePipe3_solid"/>
+      <positionref ref="telePipe3_trans"/>
+      <rotationref ref="identity"/>
+    </union>
+
+    <union name ="tele_solid_7">
+      <first ref="tele_solid_6"/>
+      <second ref="teleOverlap3_solid"/>
+      <positionref ref="teleOverlap3_trans"/>
+      <rotationref ref="identity"/>
+    </union>
+
+    <union name ="tele_solid_8">
+      <first ref="tele_solid_7"/>
+      <second ref="telePipe4_solid"/>
+      <positionref ref="telePipe4_trans"/>
+      <rotationref ref="identity"/>
+    </union>
+
+    <union name ="tele_solid_9">
+      <first ref="tele_solid_8"/>
+      <second ref="teleOverlap4_solid"/>
+      <positionref ref="teleOverlap4_trans"/>
+      <rotationref ref="identity"/>
+    </union>
+
+    <union name ="tele_solid_10">
+      <first ref="tele_solid_9"/>
+      <second ref="telePipe5_solid"/>
+      <positionref ref="telePipe5_trans"/>
+      <rotationref ref="identity"/>
+    </union>
+ 
+    <union name ="tele_solid_11">
+      <first ref="tele_solid_10"/>
+      <second ref="teleOverlap5_solid"/>
+      <positionref ref="teleOverlap5_trans"/>
+      <rotationref ref="identity"/>
+    </union>
+
+    <union name ="tele_solid_12">
+      <first ref="tele_solid_11"/>
+      <second ref="telePipe6_solid"/>
+      <positionref ref="telePipe6_trans"/>
+      <rotationref ref="identity"/>
+    </union>
+
+    <union name ="tele_solid_13">
+      <first ref="tele_solid_12"/>
+      <second ref="teleOverlap6_solid"/>
+      <positionref ref="teleOverlap6_trans"/>
+      <rotationref ref="identity"/>
+    </union>
+
+    <union name ="tele_solid_14">
+      <first ref="tele_solid_13"/>
+      <second ref="telePipe7_solid"/>
+      <positionref ref="telePipe7_trans"/>
+      <rotationref ref="identity"/>
+    </union>
+
+    <union name ="telescope_solid">
+      <first ref="tele_solid_14"/>
+      <second ref="teleFlangeDS_solid"/>
+      <positionref ref="teleFlangeDS_trans"/>
+      <rotationref ref="identity"/>
+    </union>
+
+    <!-- Gate Valve -->
+
+    <tube name="gateValve_donut" lunit="cm" 
+          aunit="deg" startphi="0" deltaphi="360"
+          rmin="gateValveDonut_r_min"
+          rmax="gateValveDonut_r_max"
+          z="gateValveDonut_thickness"/>
+    <tube name="gateValve_hole" lunit="cm" 
+          aunit="deg" startphi="0" deltaphi="360"
+          rmin="gateValveHole_r_min"
+          rmax="gateValveHole_r_max"
+          z="1.001*gateValveDonut_thickness"/>
+    <box lunit="cm" name="gateValve_plate" x="gateValvePlate_width" y="gateValvePlate_height" z="gateValvePlate_thickness"/>
+
+    <union name ="gateValve_donut_solid">
+      <first ref="gateValve_donut"/>
+      <second ref="gateValve_plate"/>
+      <positionref ref="gateValvePlate_trans"/>
+      <rotationref ref="identity"/>
+    </union>
+
+    <subtraction name ="gateValve_solid">
+      <first ref="gateValve_donut_solid"/>
+      <second ref="gateValve_hole"/>
+      <positionref ref="gateValveHole_trans"/>
+      <rotationref ref="identity"/>
+    </subtraction>
+
+    <!-- Mid Telescoping Beam Pipe -->
+
+    <tube name="midTeleFlangeUS_solid" aunit="deg" startphi="0" deltaphi="360" lunit="cm" 
+          rmin="midTeleFlangeUS_r_min" 
+          rmax="midTeleFlangeUS_r_max" 
+          z="midTeleFlangeUS_thickness"/> 
+
+    <tube name="midTelePipe1_solid" aunit="deg" startphi="0" deltaphi="360" lunit="cm" 
+          rmin="midTelePipe1_r_min" 
+          rmax="midTelePipe1_r_max" 
+          z="midTelePipe1_length"/>
+    
+    <tube name="midTeleOverlap1_solid" aunit="deg" startphi="0" deltaphi="360" lunit="cm" 
+          rmin="midTeleOverlap1_r_min" 
+          rmax="midTeleOverlap1_r_max" 
+          z="midTeleOverlap1_thickness"/> 
+
+    <tube name="midTelePipe2_solid" aunit="deg" startphi="0" deltaphi="360" lunit="cm" 
+          rmin="midTelePipe2_r_min" 
+          rmax="midTelePipe2_r_max" 
+          z="midTelePipe2_length"/>
+    
+    <tube name="midTeleOverlap2_solid" aunit="deg" startphi="0" deltaphi="360" lunit="cm" 
+          rmin="midTeleOverlap2_r_min" 
+          rmax="midTeleOverlap2_r_max" 
+          z="midTeleOverlap2_thickness"/> 
+
+    <tube name="midTelePipe3_solid" aunit="deg" startphi="0" deltaphi="360" lunit="cm" 
+          rmin="midTelePipe3_r_min" 
+          rmax="midTelePipe3_r_max" 
+          z="midTelePipe3_length"/>
+    
+    <tube name="midTeleOverlap3_solid" aunit="deg" startphi="0" deltaphi="360" lunit="cm" 
+          rmin="midTeleOverlap3_r_min" 
+          rmax="midTeleOverlap3_r_max" 
+          z="midTeleOverlap3_thickness"/> 
+
+    <tube name="midTelePipe4_solid" aunit="deg" startphi="0" deltaphi="360" lunit="cm" 
+          rmin="midTelePipe4_r_min" 
+          rmax="midTelePipe4_r_max" 
+          z="midTelePipe4_length"/>
+    
+    <tube name="midTeleOverlap4_solid" aunit="deg" startphi="0" deltaphi="360" lunit="cm" 
+          rmin="midTeleOverlap4_r_min" 
+          rmax="midTeleOverlap4_r_max" 
+          z="midTeleOverlap4_thickness"/> 
+
+    <tube name="midTelePipe5_solid" aunit="deg" startphi="0" deltaphi="360" lunit="cm" 
+          rmin="midTelePipe5_r_min" 
+          rmax="midTelePipe5_r_max" 
+          z="midTelePipe5_length"/>
+    
+    <tube name="midTeleFlangeDS_solid" aunit="deg" startphi="0" deltaphi="360" lunit="cm" 
+          rmin="midTeleFlangeDS_r_min" 
+          rmax="midTeleFlangeDS_r_max" 
+          z="midTeleFlangeDS_thickness"/> 
+
+    <union name ="midTele_solid_1">
+      <first ref="midTeleFlangeUS_solid"/>
+      <second ref="midTelePipe1_solid"/>
+      <positionref ref="midTelePipe1_trans"/>
+      <rotationref ref="identity"/>
+    </union>
+
+    <union name ="midTele_solid_3"> <!-- skip 2, cuz -->
+      <first ref="midTele_solid_1"/>
+      <second ref="midTeleOverlap1_solid"/>
+      <positionref ref="midTeleOverlap1_trans"/>
+      <rotationref ref="identity"/>
+    </union>
+
+    <union name ="midTele_solid_4">
+      <first ref="midTele_solid_3"/>
+      <second ref="midTelePipe2_solid"/>
+      <positionref ref="midTelePipe2_trans"/>
+      <rotationref ref="identity"/>
+    </union>
+
+    <union name ="midTele_solid_5">
+      <first ref="midTele_solid_4"/>
+      <second ref="midTeleOverlap2_solid"/>
+      <positionref ref="midTeleOverlap2_trans"/>
+      <rotationref ref="identity"/>
+    </union>
+ 
+    <union name ="midTele_solid_6">
+      <first ref="midTele_solid_5"/>
+      <second ref="midTelePipe3_solid"/>
+      <positionref ref="midTelePipe3_trans"/>
+      <rotationref ref="identity"/>
+    </union>
+
+    <union name ="midTele_solid_7">
+      <first ref="midTele_solid_6"/>
+      <second ref="midTeleOverlap3_solid"/>
+      <positionref ref="midTeleOverlap3_trans"/>
+      <rotationref ref="identity"/>
+    </union>
+
+    <union name ="midTele_solid_8">
+      <first ref="midTele_solid_7"/>
+      <second ref="midTelePipe4_solid"/>
+      <positionref ref="midTelePipe4_trans"/>
+      <rotationref ref="identity"/>
+    </union>
+
+    <union name ="midTele_solid_9">
+      <first ref="midTele_solid_8"/>
+      <second ref="midTeleOverlap4_solid"/>
+      <positionref ref="midTeleOverlap4_trans"/>
+      <rotationref ref="identity"/>
+    </union>
+
+    <union name ="midTele_solid_10">
+      <first ref="midTele_solid_9"/>
+      <second ref="midTelePipe5_solid"/>
+      <positionref ref="midTelePipe5_trans"/>
+      <rotationref ref="identity"/>
+    </union>
+ 
+    <union name ="midTele_solid">
+      <first ref="midTele_solid_10"/>
+      <second ref="midTeleFlangeDS_solid"/>
+      <positionref ref="midTeleFlangeDS_trans"/>
+      <rotationref ref="identity"/>
+    </union>
+
+
 
     <!-- Dump Extension Beam Pipe -->
 
@@ -746,6 +1294,30 @@
       <auxiliary auxtype="DetNo" auxvalue="8"/>
     </volume>
 
+    <volume name="telescope_logic">
+      <materialref ref="Aluminum"/>
+      <solidref ref="telescope_solid"/>
+      <auxiliary auxtype="Color" auxvalue="white"/>
+      <auxiliary auxtype="SensDet" auxvalue="Telescope"/>
+      <auxiliary auxtype="DetNo" auxvalue="52"/>
+    </volume>
+
+    <volume name="gateValve_logic">
+      <materialref ref="Aluminum"/>
+      <solidref ref="gateValve_solid"/>
+      <auxiliary auxtype="Color" auxvalue="white"/>
+      <auxiliary auxtype="SensDet" auxvalue="GateValve"/>
+      <auxiliary auxtype="DetNo" auxvalue="53"/>
+    </volume>
+
+    <volume name="midTele_logic">
+      <materialref ref="Aluminum"/>
+      <solidref ref="midTele_solid"/>
+      <auxiliary auxtype="Color" auxvalue="white"/>
+      <auxiliary auxtype="SensDet" auxvalue="MidTelescope"/>
+      <auxiliary auxtype="DetNo" auxvalue="54"/>
+    </volume>
+
     <volume name="dumpExt_logic">
       <materialref ref="Aluminum"/>
       <solidref ref="dumpExt_solid"/>
@@ -952,6 +1524,21 @@
         <rotationref ref="scRot_1"/>
       </physvol>
 
+      <physvol name="telescope">
+        <volumeref ref="telescope_logic"/>
+        <positionref ref="telescope_center"/>
+      </physvol>
+
+      <physvol name="gateValve">
+        <volumeref ref="gateValve_logic"/>
+        <positionref ref="gateValve_center"/>
+      </physvol>
+
+      <physvol name="midTele">
+        <volumeref ref="midTele_logic"/>
+        <positionref ref="midTele_center"/>
+      </physvol>
+
       <physvol name="dumpExt">
         <volumeref ref="dumpExt_logic"/>
         <positionref ref="dumpExt_center"/>
@@ -961,7 +1548,7 @@
         <volumeref ref="dump_logic"/>
         <positionref ref="dump_center"/>
       </physvol>
-<!--
+
       <physvol name="dumpTempShield_left">
         <volumeref ref="dumpTempShield_left_logic"/>
         <positionref ref="dumpTempShield_left_center"/>
@@ -971,7 +1558,7 @@
         <volumeref ref="dumpTempShield_right_logic"/>
         <positionref ref="dumpTempShield_right_center"/>
       </physvol>
--->
+
       <physvol name="ndFlangeUS">
         <volumeref ref="ndFlangeUS_logic"/>
         <positionref ref="ndFlangeUS_center"/>

@@ -95,10 +95,10 @@ int main(int argc, char** argv) {
     #endif
 
     // Choose the Random engine
-    G4Random::setTheEngine(new CLHEP::RanecuEngine());
+    //G4Random::setTheEngine(new CLHEP::RanecuEngine());
     G4Random::setTheSeed(seed);
     remollRun::GetRunData()->SetSeed(seed);
-    std::cout<<"The seed is "<<seed<<std::endl;
+    std::cout<<"The new seed is "<<seed<<std::endl;
     // Messenger
     // TODO only thing the messenger does is set the seed, this could and should
     // be done by /random/ commands in next major version

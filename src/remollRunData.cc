@@ -20,6 +20,7 @@ remollRunData::~remollRunData(){
 }
 
 void remollRunData::Init(){
+    printf("remollRunData.cc: INIT() the seed is now fSeed= %d",fSeed);
     fNthrown = 0;
     fBeamE   = 0;
     strcpy(fGenName, "default");
@@ -44,6 +45,7 @@ void remollRunData::Print(){
     printf("N generated = %ld\n", fNthrown);
     printf("Beam Energy = %f GeV\n", fBeamE);
     printf("Generator   = %s\n", fGenName);
+    printf("remollRunData.cc: PRINT() the seed is now fSeed= %d",fSeed);
 
     printf("Field maps:\n");
     unsigned int i;

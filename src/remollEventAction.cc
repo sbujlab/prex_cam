@@ -31,7 +31,7 @@ void remollEventAction::EndOfEventAction(const G4Event* aEvent)
   G4AutoLock lock(&remollEventActionMutex);
   remollIO* io = remollIO::GetInstance();
 
-  // Store random seed
+  // FIXME // Store random seed
   //fEventSeed = aEvent->GetRandomNumberStatus();
   io->SetEventSeed(fEventSeed);
 

@@ -126,16 +126,16 @@
     
     <!-- Temp Detector FIXME -->
     
-    <constant name="tempdet_r_in" value="0.0"/>
-    <constant name="tempdet_r_out" value="120.5*i2cm - 1.0"/>
-    <constant name="tempdet_thickness" value="1.0"/>
-    <constant name="tempdet_center_z" value="hall_cylwall_radius - 25.0"/><!--center_cw70_coll + length_cw70_coll/2 + kryp_shield_thickness/2 + 10.0"/>-->
+    <constant name="tempdet_width" value="2*120.5*i2cm - 1.0"/>
+    <constant name="tempdet_height" value="2*120.5*i2cm - 1.0"/>
+    <constant name="tempdet_thickness" value="0.1"/>
+    <constant name="tempdet_center_z" value="hall_cylwall_radius - 139.76"/>
 
     <!-- US Telescoping Beampipe -->
     <constant name="teleFlangeUS_frontFace_z" value="237.54"/>
     
     <constant name="teleFlangeUS_r_min" value="6.985/2"/>
-    <constant name="teleFlangeUS_r_max" value="21.59"/> 
+    <constant name="teleFlangeUS_r_max" value="21.59/2"/> 
     <constant name="teleFlangeUS_thickness" value="1.905"/> 
     <constant name="teleFlangeUS_center_z" value="teleFlangeUS_frontFace_z + teleFlangeUS_thickness/2"/>
 
@@ -152,8 +152,8 @@
     <constant name="telePipe1_trans_z" value="telePipePre_length/2 + telePipe1_length/2"/>
     <position name="telePipe1_trans" unit="cm" x="0" y="0" z="telePipe1_trans_z"/> 
     
-    <constant name="teleOverlap1_r_min" value="7.62/2"/> <!-- Overlap between Pipe 1 and Pipe 2 --> 
-    <constant name="teleOverlap1_r_max" value="8.9/2"/> 
+    <constant name="teleOverlap1_r_min" value="1.001*7.62/2"/> <!-- Overlap between Pipe 1 and Pipe 2 --> 
+    <constant name="teleOverlap1_r_max" value="0.999*8.9/2"/> 
     <constant name="teleOverlap1_thickness" value="0.635"/> 
     <constant name="teleOverlap1_trans_z" value="telePipe1_trans_z + telePipe1_length/2 - teleOverlap1_thickness/2"/>
     <position name="teleOverlap1_trans" unit="cm" x="0" y="0" z="teleOverlap1_trans_z"/> 
@@ -164,8 +164,8 @@
     <constant name="telePipe2_trans_z" value="teleOverlap1_trans_z + teleOverlap1_thickness/2 + telePipe2_length/2"/>
     <position name="telePipe2_trans" unit="cm" x="0" y="0" z="telePipe2_trans_z"/> 
     
-    <constant name="teleOverlap2_r_min" value="8.255/2"/>
-    <constant name="teleOverlap2_r_max" value="9.525/2"/>
+    <constant name="teleOverlap2_r_min" value="1.001*8.255/2"/>
+    <constant name="teleOverlap2_r_max" value="0.999*9.525/2"/>
     <constant name="teleOverlap2_thickness" value="0.635"/>
     <constant name="teleOverlap2_trans_z" value="telePipe2_trans_z + telePipe2_length/2 - teleOverlap2_thickness/2"/>
     <position name="teleOverlap2_trans" unit="cm" x="0" y="0" z="teleOverlap2_trans_z"/>
@@ -176,8 +176,8 @@
     <constant name="telePipe3_trans_z" value="teleOverlap2_trans_z + teleOverlap2_thickness/2 + telePipe3_length/2"/>
     <position name="telePipe3_trans" unit="cm" x="0" y="0" z="telePipe3_trans_z"/>
     
-    <constant name="teleOverlap3_r_min" value="8.9/2"/>
-    <constant name="teleOverlap3_r_max" value="10.16/2"/>
+    <constant name="teleOverlap3_r_min" value="1.001*8.9/2"/>
+    <constant name="teleOverlap3_r_max" value="0.999*10.16/2"/>
     <constant name="teleOverlap3_thickness" value="0.635"/>
     <constant name="teleOverlap3_trans_z" value="telePipe3_trans_z + telePipe3_length/2 - teleOverlap3_thickness/2"/>
     <position name="teleOverlap3_trans" unit="cm" x="0" y="0" z="teleOverlap3_trans_z"/>
@@ -188,8 +188,8 @@
     <constant name="telePipe4_trans_z" value="teleOverlap3_trans_z + teleOverlap3_thickness/2 + telePipe4_length/2"/>
     <position name="telePipe4_trans" unit="cm" x="0" y="0" z="telePipe4_trans_z"/>
     
-    <constant name="teleOverlap4_r_min" value="9.525/2"/>
-    <constant name="teleOverlap4_r_max" value="12.7/2"/>
+    <constant name="teleOverlap4_r_min" value="1.001*9.525/2"/>
+    <constant name="teleOverlap4_r_max" value="0.999*12.7/2"/>
     <constant name="teleOverlap4_thickness" value="2.54"/>
     <constant name="teleOverlap4_trans_z" value="telePipe4_trans_z + telePipe4_length/2 - teleOverlap4_thickness/2"/>
     <position name="teleOverlap4_trans" unit="cm" x="0" y="0" z="teleOverlap4_trans_z"/>
@@ -200,8 +200,8 @@
     <constant name="telePipe5_trans_z" value="teleOverlap4_trans_z + teleOverlap4_thickness/2 + telePipe5_length/2"/>
     <position name="telePipe5_trans" unit="cm" x="0" y="0" z="telePipe5_trans_z"/>
     
-    <constant name="teleOverlap5_r_min" value="12.065/2"/> 
-    <constant name="teleOverlap5_r_max" value="15.24/2"/>
+    <constant name="teleOverlap5_r_min" value="1.001*12.065/2"/> 
+    <constant name="teleOverlap5_r_max" value="0.999*15.24/2"/>
     <constant name="teleOverlap5_thickness" value="2.54"/> 
     <constant name="teleOverlap5_trans_z" value="telePipe5_trans_z + telePipe5_length/2 - teleOverlap5_thickness/2"/>
     <position name="teleOverlap5_trans" unit="cm" x="0" y="0" z="teleOverlap5_trans_z"/>
@@ -212,8 +212,8 @@
     <constant name="telePipe6_trans_z" value="teleOverlap5_trans_z + teleOverlap5_thickness/2 + telePipe6_length/2"/>
     <position name="telePipe6_trans" unit="cm" x="0" y="0" z="telePipe6_trans_z"/>
     
-    <constant name="teleOverlap6_r_min" value="14.605/2"/> 
-    <constant name="teleOverlap6_r_max" value="20.32/2"/> 
+    <constant name="teleOverlap6_r_min" value="1.001*14.605/2"/> 
+    <constant name="teleOverlap6_r_max" value="0.999*20.32/2"/> 
     <constant name="teleOverlap6_thickness" value="2.54"/> 
     <constant name="teleOverlap6_trans_z" value="telePipe6_trans_z + telePipe6_length/2 - teleOverlap6_thickness/2"/>
     <position name="teleOverlap6_trans" unit="cm" x="0" y="0" z="teleOverlap6_trans_z"/>
@@ -224,7 +224,7 @@
     <constant name="telePipe7_trans_z" value="teleOverlap6_trans_z + teleOverlap6_thickness/2 + telePipe7_length/2"/>
     <position name="telePipe7_trans" unit="cm" x="0" y="0" z="telePipe7_trans_z"/>
     
-    <constant name="teleFlangeDS_r_min" value="19.837/2"/> 
+    <constant name="teleFlangeDS_r_min" value="1.001*19.837/2"/> 
     <constant name="teleFlangeDS_r_max" value="34.29/2"/> 
     <constant name="teleFlangeDS_thickness" value="5.08"/> <!-- Placeholder, as are all flange and overlap lengths -->
     <constant name="teleFlangeDS_trans_z" value="telePipe7_trans_z + telePipe7_length/2"/>
@@ -378,7 +378,7 @@
     <position unit="cm" name="dumpExt_center" x="0" y="0" z="dumpExt_center_z"/> 
     <position unit="cm" name="dump_center" x="0" y="dump_center_y" z="dump_center_z"/>
     <position unit="cm" name="dumpTempShield_left_center" x="-1.*dump_width/2 + dump_wall_thickness + dumpTempShieldUS_width/2" y="-1.*(dump_floor_distance_beam) + dumpTempShieldUS_height/2" z="hall_cylwall_radius + (98.0*i2cm + (dumpTempShieldUS_length/2))"/> <!-- old FIXME +dumpTempShieldMS_length+dumpTempShieldDS_length+dumpTempShieldGap_length)/2)"/> -->
-  <position unit="cm" name="dumpTempShield_right_center" x="1.*dump_width/2 - dump_wall_thickness - dumpTempShieldUS_width/2" y="-1.*(dump_floor_distance_beam) + dumpTempShieldUS_height/2" z="hall_cylwall_radius + (98.0*i2cm + (dumpTempShieldUS_length/2))"/>
+    <position unit="cm" name="dumpTempShield_right_center" x="1.*dump_width/2 - dump_wall_thickness - dumpTempShieldUS_width/2" y="-1.*(dump_floor_distance_beam) + dumpTempShieldUS_height/2" z="hall_cylwall_radius + (98.0*i2cm + (dumpTempShieldUS_length/2))"/>
     <position unit="cm" name="ndFlangeUS_center" x="0" y="0" z="ndFlangeUS_center_z"/>
     <position unit="cm" name="ndConeUS_center" x="0" y="0" z="ndConeUS_center_z"/>
     <position unit="cm" name="ndPipeUS_center" x="0" y="0" z="ndPipeUS_center_z"/>
@@ -568,8 +568,8 @@
     
     <tube aunit="deg" startphi="0" deltaphi="360"
           lunit="cm" name="kryp_shield_sub_1"
-          rmin="telePipePre_r_min"
-          rmax="telePipePre_r_max"
+          rmin="0.999*telePipePre_r_min"
+          rmax="1.001*telePipePre_r_max"
           z="1.05*kryp_shield_thickness"/>
     
     <union name ="kryp_shield_solid">
@@ -580,10 +580,9 @@
     </union>
 
     <!-- Temp Detector -->
-    <tube aunit="deg" startphi="0" deltaphi="360"
-          lunit="cm" name="tempdet_solid"
-          rmin="tempdet_r_in"
-          rmax="tempdet_r_out"
+    <box lunit="cm" name="tempdet_solid"
+          x="tempdet_width"
+          y="tempdet_height"
           z="tempdet_thickness"/>
 
 
@@ -696,105 +695,105 @@
       <second ref="teleFlangeUS_solid"/>
       <positionref ref="teleFlangeUS_trans"/>
       <rotationref ref="identity"/>
-    </subtraction>
+    </union>
 
     <union name ="tele_solid_2">
       <first ref="tele_solid_1"/>
       <second ref="telePipe1_solid"/>
       <positionref ref="telePipe1_trans"/>
       <rotationref ref="identity"/>
-    </subtraction>
+    </union>
 
     <union name ="tele_solid_3">
       <first ref="tele_solid_2"/>
       <second ref="teleOverlap1_solid"/>
       <positionref ref="teleOverlap1_trans"/>
       <rotationref ref="identity"/>
-    </subtraction>
+    </union>
 
     <union name ="tele_solid_4">
       <first ref="tele_solid_3"/>
       <second ref="telePipe2_solid"/>
       <positionref ref="telePipe2_trans"/>
       <rotationref ref="identity"/>
-    </subtraction>
+    </union>
 
     <union name ="tele_solid_5">
       <first ref="tele_solid_4"/>
       <second ref="teleOverlap2_solid"/>
       <positionref ref="teleOverlap2_trans"/>
       <rotationref ref="identity"/>
-    </subtraction>
-
+    </union>
+ 
     <union name ="tele_solid_6">
       <first ref="tele_solid_5"/>
       <second ref="telePipe3_solid"/>
       <positionref ref="telePipe3_trans"/>
       <rotationref ref="identity"/>
-    </subtraction>
+    </union>
 
     <union name ="tele_solid_7">
       <first ref="tele_solid_6"/>
       <second ref="teleOverlap3_solid"/>
       <positionref ref="teleOverlap3_trans"/>
       <rotationref ref="identity"/>
-    </subtraction>
+    </union>
 
     <union name ="tele_solid_8">
       <first ref="tele_solid_7"/>
       <second ref="telePipe4_solid"/>
       <positionref ref="telePipe4_trans"/>
       <rotationref ref="identity"/>
-    </subtraction>
+    </union>
 
     <union name ="tele_solid_9">
       <first ref="tele_solid_8"/>
       <second ref="teleOverlap4_solid"/>
       <positionref ref="teleOverlap4_trans"/>
       <rotationref ref="identity"/>
-    </subtraction>
+    </union>
 
     <union name ="tele_solid_10">
       <first ref="tele_solid_9"/>
       <second ref="telePipe5_solid"/>
       <positionref ref="telePipe5_trans"/>
       <rotationref ref="identity"/>
-    </subtraction>
-
+    </union>
+ 
     <union name ="tele_solid_11">
       <first ref="tele_solid_10"/>
       <second ref="teleOverlap5_solid"/>
       <positionref ref="teleOverlap5_trans"/>
       <rotationref ref="identity"/>
-    </subtraction>
+    </union>
 
     <union name ="tele_solid_12">
       <first ref="tele_solid_11"/>
       <second ref="telePipe6_solid"/>
       <positionref ref="telePipe6_trans"/>
       <rotationref ref="identity"/>
-    </subtraction>
+    </union>
 
     <union name ="tele_solid_13">
       <first ref="tele_solid_12"/>
       <second ref="teleOverlap6_solid"/>
       <positionref ref="teleOverlap6_trans"/>
       <rotationref ref="identity"/>
-    </subtraction>
+    </union>
 
     <union name ="tele_solid_14">
       <first ref="tele_solid_13"/>
       <second ref="telePipe7_solid"/>
       <positionref ref="telePipe7_trans"/>
       <rotationref ref="identity"/>
-    </subtraction>
+    </union>
 
     <union name ="telescope_solid">
       <first ref="tele_solid_14"/>
       <second ref="teleFlangeDS_solid"/>
       <positionref ref="teleFlangeDS_trans"/>
       <rotationref ref="identity"/>
-    </subtraction>
+    </union>
 
     <!-- Dump Extension Beam Pipe -->
 

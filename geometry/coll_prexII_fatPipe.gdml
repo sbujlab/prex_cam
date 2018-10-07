@@ -124,11 +124,11 @@
     <constant name="hall_top_center_y" value="-1.*hall_topwall_r_out + hall_topwall_height + hall_cylwall_height - hall_floor_distance"/>
     
     <!-- Temp Detector FIXME -->
-    
-    <constant name="tempdet_r_in" value="0.0"/>
-    <constant name="tempdet_r_out" value="120.5*i2cm - 1.0"/>
-    <constant name="tempdet_thickness" value="1.0"/>
-    <constant name="tempdet_center_z" value="hall_cylwall_radius - 25.0"/><!--center_cw70_coll + length_cw70_coll/2 + kryp_shield_thickness/2 + 10.0"/>-->
+
+    <constant name="tempdet_width" value="2*120.5*i2cm - 1.0"/>
+    <constant name="tempdet_height" value="2*120.5*i2cm - 1.0"/>
+    <constant name="tempdet_thickness" value="0.1"/>
+    <constant name="tempdet_center_z" value="hall_cylwall_radius - 139.76"/>
 
     <!-- Dump Extension Beampipe -->
     <constant name="dumpExt_r_min" value="18.0*i2cm"/>
@@ -464,10 +464,9 @@
           z="kryp_shield_thickness"/>
 
     <!-- Temp Detector -->
-    <tube aunit="deg" startphi="0" deltaphi="360"
-          lunit="cm" name="tempdet_solid"
-          rmin="tempdet_r_in"
-          rmax="tempdet_r_out"
+    <box lunit="cm" name="tempdet_solid"
+          x="tempdet_width"
+          y="tempdet_height"
           z="tempdet_thickness"/>
 
 
