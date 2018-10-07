@@ -165,10 +165,12 @@ set(REMOLL_SCRIPTS
     vis/OIX.mac
     vis/Qt.mac
     vis/vis.mac
+    vis/vistest.mac
     vis/X.mac
     macros/runexample.mac
     macros/gui.mac
     macros/vis.mac
+    macros/vistest.mac
     rootlogon.C
   )
 

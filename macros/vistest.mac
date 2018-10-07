@@ -30,7 +30,7 @@
 #/remoll/addfield CLEO_rm.dat
 
 #/control/execute vis/vis.mac
-/control/execute vis/vis.mac
+/control/execute vis/vistest.mac
 
 #/gun/position 0.0 0.0 -0.1 m
 #/gun/momentum 0.5 1.0 2.0 GeV
